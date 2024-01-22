@@ -1,6 +1,7 @@
 spring:
   application:
     name: API
+
   #database-config
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/sw678?useUnicode=true;characterEncoding=utf8;
@@ -12,12 +13,20 @@ spring:
     database: mysql
     database-platform: org.hibernate.dialect.MySQLDialect
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
     generate-ddl: true
     properties:
       hibernate:
         format_sql: true
         show_sql: false
+
+  #THYMELEAF CONFIG
+  thymeleaf:
+    check-template-location: true
+    prefix: classpath:/templates/
+    suffix: .html
+    cache: false
+
 
 logging:
   level:

@@ -1,6 +1,6 @@
-package com.sw678.park_service.controller;
+package com.sw678.api_service.controller;
 
-import com.sw678.park_service.service.ParkService;
+import com.sw678.api_service.service.ParkService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

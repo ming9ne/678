@@ -1,4 +1,4 @@
-package com.sw678.park_service;
+package com.sw678.api_service;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

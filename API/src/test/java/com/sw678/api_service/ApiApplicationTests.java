@@ -1,4 +1,4 @@
-package com.sw678.park_service;
+package com.sw678.api_service;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
