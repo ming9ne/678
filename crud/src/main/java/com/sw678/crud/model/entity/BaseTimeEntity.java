@@ -1,4 +1,4 @@
-package com.sw678.crud.entity;
+package com.sw678.crud.model.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;
