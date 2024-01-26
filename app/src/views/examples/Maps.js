@@ -1,203 +1,48 @@
-/*!
+import React, { useEffect } from "react";
 
-=========================================================
-* Argon Dashboard React - v1.2.4
-=========================================================
+const { kakao } = window;
 
-* Product Page: https://www.creative-tim.com/product/argon-dashboard-react
-* Copyright 2024 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/argon-dashboard-react/blob/master/LICENSE.md)
+function KakaoMapWithMarker() {
+  useEffect(() => {
+    // 카카오 맵 API 로드
+    kakao.maps.load(() => {
+      const container = document.getElementById('map');
+      const options = {
+        center: new kakao.maps.LatLng(37.615749261729, 127.01326329513556),
+        level: 3
+      };
 
-* Coded by Creative Tim
+      // 지도 생성
+      const map = new kakao.maps.Map(container, options);
 
-=========================================================
+      // 마커 생성
+      const markerPosition = new kakao.maps.LatLng(37.615749261729, 127.01326329513556);
+      const marker = new kakao.maps.Marker({
+        position: markerPosition
+      });
 
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+      // 마커 지도에 표시
+      marker.setMap(map);
 
-*/
-import React from "react";
+      // 창 크기가 변경될 때 맵을 중앙에 유지
+      const centerPosition = map.getCenter();
+      const resizeEvent = kakao.maps.event.addListener(map, 'resize', function () {
+        map.panTo(centerPosition);
+      });
 
-// reactstrap components
-import { Card, Container, Row } from "reactstrap";
-
-// core components
-import Header from "components/Headers/Header.js";
-
-const MapWrapper = () => {
-  const mapRef = React.useRef(null);
-  React.useEffect(() => {
-    let google = window.google;
-    let map = mapRef.current;
-    let lat = "40.748817";
-    let lng = "-73.985428";
-    const myLatlng = new google.maps.LatLng(lat, lng);
-    const mapOptions = {
-      zoom: 12,
-      center: myLatlng,
-      scrollwheel: false,
-      zoomControl: true,
-      styles: [
-        {
-          featureType: "administrative",
-          elementType: "labels.text.fill",
-          stylers: [{ color: "#444444" }],
-        },
-        {
-          featureType: "landscape",
-          elementType: "all",
-          stylers: [{ color: "#f2f2f2" }],
-        },
-        {
-          featureType: "poi",
-          elementType: "all",
-          stylers: [{ visibility: "off" }],
-        },
-        {
-          featureType: "road",
-          elementType: "all",
-          stylers: [{ saturation: -100 }, { lightness: 45 }],
-        },
-        {
-          featureType: "road.highway",
-          elementType: "all",
-          stylers: [{ visibility: "simplified" }],
-        },
-        {
-          featureType: "road.arterial",
-          elementType: "labels.icon",
-          stylers: [{ visibility: "off" }],
-        },
-        {
-          featureType: "transit",
-          elementType: "all",
-          stylers: [{ visibility: "off" }],
-        },
-        {
-          featureType: "water",
-          elementType: "all",
-          stylers: [{ color: "#5e72e4" }, { visibility: "on" }],
-        },
-      ],
-    };
-
-    map = new google.maps.Map(map, mapOptions);
-
-    const marker = new google.maps.Marker({
-      position: myLatlng,
-      map: map,
-      animation: google.maps.Animation.DROP,
-      title: "Light Bootstrap Dashboard PRO React!",
-    });
-
-    const contentString =
-        '<div class="info-window-content"><h2>Light Bootstrap Dashboard PRO React</h2>' +
-        "<p>A premium Admin for React-Bootstrap, Bootstrap, React, and React Hooks.</p></div>";
-
-    const infowindow = new google.maps.InfoWindow({
-      content: contentString,
-    });
-
-    google.maps.event.addListener(marker, "click", function () {
-      infowindow.open(map, marker);
+      // 컴포넌트가 언마운트될 때 이벤트 리스너 제거
+      return () => {
+        kakao.maps.event.removeListener(resizeEvent);
+      };
     });
   }, []);
+
   return (
-      <>
-        <div
-            style={{ height: `600px` }}
-            className="map-canvas"
-            id="map-canvas"
-            ref={mapRef}
-        ></div>
-      </>
+      <div id="map" style={{
+        width: '100vw', // 전체 화면 가로
+        height: '100vh', // 전체 화면 세로
+      }}></div>
   );
-};
+}
 
-const Maps = () => {
-  return (
-      <>
-        <Header />
-        {/* Page content */}
-        <Container className="mt--7" fluid>
-          <Row>
-            <div className="col">
-              <Card className="shadow border-0">
-                <MapWrapper />
-              </Card>
-            </div>
-          </Row>
-        </Container>
-      </>
-  );
-};
-
-export default Maps;
-
-
-// import React, { useEffect, useRef } from "react";
-// import { Card, Container, Row } from "reactstrap";
-// import { Map } from "react-kakao-maps-sdk";
-//
-// const MapWrapper = () => {
-//   const mapRef = useRef(null);
-//
-//   useEffect(() => {
-//     const container = mapRef.current;
-//
-//     window.kakao.maps.load({ appkey: "cacd33e979ada8c508ba8b257cd6a042" }, () => {
-//       const options = {
-//         center: new window.kakao.maps.LatLng(37.566535, 126.9779692),
-//         level: 12,
-//       };
-//
-//       const map = new window.kakao.maps.Map(container, options);
-//
-//       const markerPosition = new window.kakao.maps.LatLng(37.566535, 126.9779692);
-//
-//       const marker = new window.kakao.maps.Marker({
-//         position: markerPosition,
-//         image: new window.kakao.maps.MarkerImage(
-//             "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png",
-//             new window.kakao.maps.Size(24, 35),
-//             { offset: new window.kakao.maps.Point(13, 35) }
-//         ),
-//       });
-//
-//       marker.setMap(map);
-//
-//       window.kakao.maps.event.addListener(marker, "click", function () {
-//         const infowindow = new window.kakao.maps.InfoWindow({
-//           content: '<div style="padding:5px;">카카오맵</div>',
-//         });
-//         infowindow.open(map, marker);
-//       });
-//     });
-//   }, []);
-//
-//   return (
-//       <div
-//           style={{ height: `600px` }}
-//           className="map-canvas"
-//           id="map-canvas"
-//           ref={mapRef}
-//       ></div>
-//   );
-// };
-//
-// const Maps = () => {
-//   return (
-//       <>
-//         <Container className="mt--7" fluid>
-//           <Row>
-//             <div className="col">
-//               <Card className="shadow border-0">
-//                 <MapWrapper />
-//               </Card>
-//             </div>
-//           </Row>
-//         </Container>
-//       </>
-//   );
-// };
-//
-// export default Maps;
+export default KakaoMapWithMarker;
