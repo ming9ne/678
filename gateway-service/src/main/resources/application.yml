@@ -1,0 +1,105 @@
+server:
+  port: 8000
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    instance-id: ${spring.application.name}
+    prefer-ip-address: true
+
+spring:
+  application:
+    name: gateway-service
+
+  cloud:
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "http://localhost:3000"
+            allow-credentials: true
+            allowedHeaders: '*'
+            allowedMethods:
+              - GET
+              - POST
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Credentials
+        - name: GlobalFilter
+          args:
+            baseMessage: Spring Cloud Gateway Global Filter
+            preLogger: true
+            postLogger: true
+      routes:
+        # 문화행사
+        - id: event-service
+          uri: lb://EVENT-SERVICE
+          predicates:
+            - Path=/api/v1/event-service/**
+        # board
+        - id: board
+          uri: lb://BOARD
+          predicates:
+            - Path=/api/v1/board/**
+        # 혼잡도
+        - id: congestion-service
+          uri: lb://CONGESTION-SERVICE
+          predicates:
+            - Path=/api/v1/congestion-service/**
+        # 지역
+        - id: area-service
+          uri: lb://AREA-SERVICE
+          predicates:
+            - Path=/api/v1/area-service/**
+        # 따릉이
+        - id: sbike-service
+          uri: lb://SBIKE-SERVICE
+          predicates:
+            - Path=/api/v1/sbike-service/**
+        # 도시
+        - id: city-service
+          uri: lb://CITY-SERVICE
+          predicates:
+            - Path=/api/v1/city-service/**
+        # 쿠폰
+        - id: coupon-service
+          uri: lb://COUPON-SERVICE
+          predicates:
+            - Path=/api/v1/coupon-service/**
+        # 유저
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/api/v1/user-service/**
+        - id: user-service-login
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/api/v1/user-service/login
+            - Method=POST
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/api/v1/user-service/users
+            - Method=POST
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/api/v1/user-service/(?<segment>.*), /$\{segment}
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/api/v1/user-service/**
+#            - Method=GET
+          filters:
+            - RemoveRequestHeader=Cookie
+#            - AuthorizationHeaderFilter
+#            - RewritePath=/api/v1/user-service/(?<segment>.*), /$\{segment}
+
+token:
+  expiration_time: 86400000
+  secret: dXNlcnRva2VudXNlcnRva2VudXNlcnRva2VudXNlcnRva2VudXNlcnRva2VudXNlcnRva2VudXNlcnRva2VudXNlcnRva2VudXNlcnRva2VudXNlcnRva2VudXNlcnRva2Vu
