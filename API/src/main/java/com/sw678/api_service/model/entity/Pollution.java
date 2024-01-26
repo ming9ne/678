@@ -4,6 +4,8 @@ import com.sw678.api_service.model.dto.PollutionDto;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -29,6 +31,8 @@ public class Pollution {
     private String pm10;
     @Column(length = 255)
     private String pm25;        // 2.5가 초미세먼지 -> 변수 작명상 소수점 안돼서 25로 정함.
+    @Column(length = 255)
+    private String updateTime;
 
     public PollutionDto toDto(){
         return PollutionDto.builder()
@@ -39,6 +43,7 @@ public class Pollution {
                 .grade(grade)
                 .pm10(pm10)
                 .pm25(pm25)
+                .updateTime(updateTime)
                 .build();
     }
 }

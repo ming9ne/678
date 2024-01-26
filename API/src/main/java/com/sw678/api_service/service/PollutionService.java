@@ -77,7 +77,7 @@ public class PollutionService {
         String dateStr = (String)pollution.get("MSRDATE");
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMddHHmm");
-
+        String now = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 HH시 mm분"));
         LocalDateTime localDateTime = LocalDateTime.parse(dateStr, formatter);
         String parsedDate = localDateTime.
                 format(DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 HH시"));
@@ -86,6 +86,7 @@ public class PollutionService {
         String grade = ((String)pollution.get("GRADE")).equals("")
                             ? "점검중" : (String)pollution.get("GRADE");
 
+
         PollutionDto pollutionDto = PollutionDto.builder()
                 .msrCode((String) pollution.get("MSRADMCODE"))
                 .msrName((String) pollution.get("MSRSTENAME"))
@@ -93,6 +94,7 @@ public class PollutionService {
                 .grade(grade)
                 .pm10((String)pollution.get("PM10"))
                 .pm25((String) pollution.get("PM25"))
+                .updateTime(now)
                 .build();
         return pollutionDto;
     }
