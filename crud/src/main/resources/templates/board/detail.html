@@ -18,9 +18,9 @@
 <main role="main" class="container">
     <div class="starter-template">
 
-        <table class ="table table-bordered">
+        <table class ="table table-bordered"  style="margin-top: 100px;">
             <thead>
-            <caption>글 읽기</caption>
+           <!-- <caption>글 읽기</caption> -->
             </thead>
             <tbody>
             <tr>
@@ -34,7 +34,7 @@
             </tr>
             <tr>
                 <th>작성일</th>
-                <td th:inline="text">[[${#temporals.format(boardDto.createdDate, 'yyyy-MM-dd HH:mm')}]]</td>
+                <td th:inline="text">[[${#temporals.format(boardDto.createdAt, 'yyyy-MM-dd HH:mm')}]]</td>
             </tr>
             <tr>
                 <th>본문 내용</th>
@@ -44,14 +44,14 @@
         </table>
 
         <!-- 수정/삭제 -->
-        <div>
-            <a th:href="@{'/board/post/edit/' + ${boardDto.id}}">
-                <button class="btn btn-primary">수정</button>
-            </a>
+        <!-- 수정/삭제/돌아가기 버튼 가로 배열 -->
+        <div class="btn-group">
+            <a th:href="@{'/board/post/edit/' + ${boardDto.id}}" class="btn btn-primary">수정</a>
             <form id="delete-form" th:action="@{'/board/post/' + ${boardDto.id}}" method="post">
                 <input type="hidden" name="_method" value="delete"/>
                 <button class="btn btn-warning" id="delete-btn">삭제</button>
             </form>
+            <a th:href="@{'/board/list'}" class="btn btn-primary">돌아가기</a>
         </div>
 
         <!-- 변수 셋팅 -->
