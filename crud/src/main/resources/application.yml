@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: crud
+  #database-config
+  datasource:
+    url: jdbc:mysql://localhost:3306/sw678?useUnicode=true;characterEncoding=utf8;
+    username: root
+    password: 960410
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      ddl-auto: update
+    generate-ddl: true
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+
+  thymeleaf:
+    enabled: true
+    encoding: UTF-8
+    mode: HTML5
