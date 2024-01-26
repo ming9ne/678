@@ -23,6 +23,7 @@ public class ParkService {
     private static final ObjectMapper objectMapper = new ObjectMapper();
     private final RestTemplate restTemplate;
     private ParkRepository parkRepository;
+    List<ParkDto> parkDtoList;
 
     @Autowired
     public ParkService(RestTemplate restTemplate, ParkRepository parkRepository) {
@@ -30,15 +31,15 @@ public class ParkService {
         this.parkRepository = parkRepository;
     }
 
-    public void saveParkInfo(){
+    public List<ParkDto> saveParkInfo(){
         int startPage = 1;
         int maxPage = 500;
         String url = "http://openapi.seoul.go.kr:8088/5051666379746e733737476265586d/json/SearchParkInfoService/"
                 + startPage + "/" + maxPage;
 
         try {
-            log.info("=== api 호출 후 데이터 저장 로직 시작 ===\n");
-
+            log.info("\n=== api 호출 후 데이터 저장 로직 시작 ===\n");
+            parkDtoList = new ArrayList<>();
             ResponseEntity<String> responseEntity = restTemplate.getForEntity(url, String.class);
 
             // API 호출 후 JSON 데이터 파싱
@@ -47,20 +48,19 @@ public class ParkService {
             JSONArray totalData = (JSONArray) jsonData.get("row");
             //System.out.println(totalData);
 
-            List<ParkDto> parkDtoList = new ArrayList<>();
 
             for(Object data : totalData){
                 JSONObject object = (JSONObject) data;
                 ParkDto parkDto = makeDtoByJsonData(object);
-
+                parkDtoList.add(parkDto);
                 parkRepository.save(parkDto.toEntity());
             }
         } catch (Exception e) {
             log.warn("초기 API 호출 중 오류 발생");
             e.printStackTrace();
-            return;
         }
         log.info("\n=== api 호출 후 데이터 저장 로직 끝 ===");
+        return parkDtoList;
     }
 
 
