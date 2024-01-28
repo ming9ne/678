@@ -1,81 +1,74 @@
 package com.sw678.crud.controller;
 
-import com.sw678.crud.model.dto.UserDto;
+import com.sw678.crud.model.dto.SigninDto;
+import com.sw678.crud.model.dto.SignupDto;
 import com.sw678.crud.model.entity.User;
 import com.sw678.crud.service.UserService;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-@RequestMapping("/user")
 @RequiredArgsConstructor
 public class UserController {
 
     private final UserService userService;
 
-    // 로그인
-    @GetMapping("/login")
-    public String login(Model model){
-        model.addAttribute("userDto",new UserDto());
+    @GetMapping("/signin")
+    public String signinForm(Model model){
+        model.addAttribute("signinDto", new SignupDto());
 
-        return "/user/login";
+        return "signinForm";
     }
 
-    @PostMapping("/login")
-    public String login(@ModelAttribute UserDto userDto, HttpServletRequest request, Model model) throws Exception{
-        HttpSession session = request.getSession();
-        UserDto findUserDto = userService.login(userDto);
-        if(findUserDto != null){
-            session.setAttribute("user",findUserDto);
-        }else{
-            model.addAttribute("message","ID나 비밀번호가 다릅니다.");
-            return "/user/login";
+    @PostMapping("/signin")
+    public String signinForm(@Valid SigninDto signinDto, BindingResult bindingResult){
+
+        // 검증 실패시
+        if(bindingResult.hasErrors()){
+            return "signinForm";
         }
-        return "redirect:/user";
-    }
 
-    // 로그아웃
-    @GetMapping("/logout")
-    public String logout(HttpServletRequest request){
-        request.getSession().invalidate();
-        request.getSession(true);
-        return "redirect:/user";
+        // 로그인 시도
+        User loginUser = userService.login(signinDto);
+
+        if(loginUser == null){
+            bindingResult.reject("loginFail", "아이디나 비밀번호가 일치하지 않습니다.");
+            return "signinForm";
+        }
+
+        System.out.println("로그인 성공입니다.");
+        // 로그인 성공 처리시
+        return "redirect:/board/list";
     }
 
     // 회원가입
     @GetMapping("/signup")
-    public String signUp(UserDto dto){
+    public String signupForm(Model model){
+        model.addAttribute("signupDto", new SignupDto());
 
-        return "/user/signup";
+        return "signupForm";
     }
-
 
     @PostMapping("/signup")
-    public String SignUpPost(@Valid @ModelAttribute UserDto userDto, BindingResult bindingResult) throws Exception{
+    public String signup(@Valid @ModelAttribute SignupDto signupDto, BindingResult bindingResult){
+
+        // 검증 오류 확인
         if(bindingResult.hasErrors()){
-            return "user/signup";
-        } else{
-            if(userService.userCheck(userDto)){
-                userService.join(userDto);
-            }
+            return "signupForm";
         }
 
-        return "redirect:/user/login";
-    }
-/*
-    @PostMapping("/check")
-    @ResponseBody
-    public int idCheck(@ModelAttribute UserDto userDto){
-        int count = userService.userCheck(userDto.getUsername());
-        return count;
+        // 회원가입 로직
+        User user = signupDto.toEntity();
+        userService.signup(user);
+
+        return "redirect:/signin";
     }
 
-*/
+
 }

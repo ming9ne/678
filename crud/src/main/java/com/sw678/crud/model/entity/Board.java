@@ -16,8 +16,6 @@ public class Board extends BaseTimeEntity {
     @Column(name="post_id")
     private Long id; // 게시글 index
 
-    // private User user_id ; 유저 인덱스
-
 
     private String writer;
 
