@@ -1,9 +1,74 @@
-import React, { useEffect } from "react";
+import React, {useEffect, useState} from "react";
 import geojson from '../../data/geo3.json'; // 경로를 적절히 조정하세요
 
 const { kakao } = window;
 
 function KakaoMapWithMarker() {
+
+    const [parkData, setParkData] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch("http://192.168.219.107:8080/api/v1/park-service/load");
+                if (response.ok) {
+                    const data = await response.json();
+                    setParkData(data);
+                } else {
+                    console.error("Failed to fetch park data");
+                }
+            } catch (error) {
+                console.error("Error while fetching park data", error);
+            }
+        };
+
+        fetchData();
+    }, []); // 빈 배열을 전달하여 컴포넌트가 마운트된 후 한 번만 실행되도록 함
+
+    useEffect(() => {
+        if (parkData.length > 0) {
+            const mapContainer = document.getElementById('pollution-map');
+            const mapOption = {
+                center: new kakao.maps.LatLng(37.566826, 126.9786567),
+                level: 9,
+            };
+
+            const map = new kakao.maps.Map(mapContainer, mapOption);
+
+            parkData.forEach((park) => {
+                // park 데이터를 사용하여 마커를 지도에 표시하는 로직
+                const markerPosition = new kakao.maps.LatLng(Number(park.parkLocY), Number(park.parkLocX));
+
+                // 마커 이미지를 생성
+                const markerImage = new kakao.maps.MarkerImage(
+                    park.parkImg, // 마커 이미지 URL
+                    new kakao.maps.Size(50, 50), // 마커 이미지 크기
+                    { offset: new kakao.maps.Point(25, 50) } // 마커 이미지의 중심 좌표
+                );
+
+                // 마커를 생성
+                const marker = new kakao.maps.Marker({
+                    position: markerPosition,
+                    image: markerImage, // 마커 이미지 설정
+                });
+
+                // 마커를 지도에 표시
+                marker.setMap(map);
+
+                // 마커 클릭 이벤트 리스너
+                kakao.maps.event.addListener(marker, 'click', function () {
+                    // 클릭한 마커에 대한 정보를 인포윈도우에 표시
+                    const infowindow = new kakao.maps.InfoWindow({
+                        content: `<div><b>${park.parkName}</b><br>주소: ${park.parkAddr}<br>전화번호: ${park.telNum}</div>`,
+                    });
+                    infowindow.open(map, marker);
+                });
+            });
+        }
+    }, [parkData]);
+
+    ///////////////////////////////////////////////////////////////////
+
     useEffect(() => {
         let data = geojson.features;
         let coordinates = [];
