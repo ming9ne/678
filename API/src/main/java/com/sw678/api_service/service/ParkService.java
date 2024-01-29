@@ -71,8 +71,8 @@ public class ParkService {
                             .parkName((String) park.get("P_PARK"))
                             .parkAddr((String) park.get("P_ADDR"))
                             .telNum((String) park.get("P_ADMINTEL"))
-                            .parkLocX((String)park.get("G_LONGITUDE"))
-                            .parkLocY((String)park.get("G_LATITUDE"))
+                            .parkLocX((String)park.get("LONGITUDE"))
+                            .parkLocY((String)park.get("LATITUDE"))
                             .parkImg((String) park.get("P_IMG"))
                             .parkUrl((String) park.get("TEMPLATE_URL"))
                             .build();

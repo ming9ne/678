@@ -1,18 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
-<<<<<<< HEAD
     <file type="web" url="file://$PROJECT_DIR$/API" />
-    <file type="web" url="file://$PROJECT_DIR$/board" />
     <file type="web" url="file://$PROJECT_DIR$/crud" />
-  </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" project-jdk-name="17" project-jdk-type="JavaSDK" />
-=======
-    <file type="web" url="file://$PROJECT_DIR$/crud" />
+    <file type="web" url="file://$PROJECT_DIR$/discovery-service" />
+    <file type="web" url="file://$PROJECT_DIR$/gateway-service" />
   </component>
   <component name="ProjectRootManager" version="2" project-jdk-name="17" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
->>>>>>> 3558166 (Feat : 패키지 추가)
 </project>

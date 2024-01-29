@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: io.netty:netty-transport-classes-epoll:4.1.100.Final" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="io.netty" artifactId="netty-transport-classes-epoll" version="4.1.100.Final" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport-classes-epoll/4.1.100.Final/78489936ca1d91483e34a31d04a3b0812386eb39/netty-transport-classes-epoll-4.1.100.Final.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport-classes-epoll/4.1.100.Final/e6573edf249410aacced1d4b1c0c99d1756af299/netty-transport-classes-epoll-4.1.100.Final-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: org.springframework.cloud:spring-cloud-starter-bootstrap:4.0.4" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="org.springframework.cloud" artifactId="spring-cloud-starter-bootstrap" version="4.0.4" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.cloud/spring-cloud-starter-bootstrap/4.0.4/60cc9cc1d4643a11f4396cb721424f4fcce66927/spring-cloud-starter-bootstrap-4.0.4.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.cloud/spring-cloud-starter-bootstrap/4.0.4/3a2a98a45d0b231f1b523d9dbe44a32947eb456d/spring-cloud-starter-bootstrap-4.0.4-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
