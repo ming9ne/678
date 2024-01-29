@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: ognl:ognl:3.3.4" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="ognl" artifactId="ognl" version="3.3.4" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/ognl/ognl/3.3.4/1904789bdd96f226ad252a02f230be1015f4462b/ognl-3.3.4.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

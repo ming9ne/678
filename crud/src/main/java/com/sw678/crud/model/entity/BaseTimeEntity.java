@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 public abstract class BaseTimeEntity {
 
     @CreatedDate // 생성 시간 자동 저장
-    @Column(name = "created_at")
+    @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
 
     @Column(name = "updated_at")

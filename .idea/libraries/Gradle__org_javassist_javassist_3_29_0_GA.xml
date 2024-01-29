@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: org.javassist:javassist:3.29.0-GA" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="org.javassist" artifactId="javassist" version="3.29.0-GA" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.javassist/javassist/3.29.0-GA/d3959fa7e00bf04dbe519228a23213d2afb625d8/javassist-3.29.0-GA.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
