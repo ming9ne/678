@@ -11,16 +11,5 @@
         <module name="crud.main" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="API" target="17" />
-      <module name="API_main" target="17" />
-      <module name="API_test" target="17" />
-      <module name="board" target="17" />
-      <module name="board_main" target="17" />
-      <module name="board_test" target="17" />
-      <module name="crud" target="17" />
-      <module name="crud.main" target="17" />
-      <module name="crud.test" target="17" />
-    </bytecodeTargetLevel>
   </component>
 </project>

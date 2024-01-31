@@ -3,15 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/678.iml" filepath="$PROJECT_DIR$/.idea/678.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/API.iml" filepath="$PROJECT_DIR$/.idea/modules/API.iml" group="API" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/API_main.iml" filepath="$PROJECT_DIR$/.idea/modules/API_main.iml" group="API" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/API_test.iml" filepath="$PROJECT_DIR$/.idea/modules/API_test.iml" group="API" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/board.iml" filepath="$PROJECT_DIR$/.idea/modules/board.iml" group="board" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/board_main.iml" filepath="$PROJECT_DIR$/.idea/modules/board_main.iml" group="board" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/board_test.iml" filepath="$PROJECT_DIR$/.idea/modules/board_test.iml" group="board" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/crud.iml" filepath="$PROJECT_DIR$/.idea/modules/crud.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/crud.main.iml" filepath="$PROJECT_DIR$/.idea/modules/crud.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/crud.test.iml" filepath="$PROJECT_DIR$/.idea/modules/crud.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.sw678.crud.main.iml" filepath="$PROJECT_DIR$/.idea/modules/com.sw678.crud.main.iml" />
     </modules>
   </component>
 </project>
