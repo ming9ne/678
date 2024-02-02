@@ -12,7 +12,7 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" th:fragment="menu(menu)">
-    <a class="navbar-brand" href="#">산책 합시다</a>
+    <a class="navbar-brand" href="#" th:href="@{/board/list}">산책 메이트</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -20,16 +20,24 @@
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item" th:classappend="${menu} == 'home'? 'active'">
-                <a class="nav-link" href="#" th:href="@{/board}">
+                <a class="nav-link" href="#" th:href="@{/board/list}">
                     홈
                     <span class="sr-only" th:if="${menu} == 'home'">(current)</span>
                 </a>
             </li>
             <li class="nav-item" th:classappend="${menu} == 'board'? 'active'">
-                <a class="nav-link" href="#" th:href="@{/board/list}">
-                    게시판
+                <a class="nav-link" href="#" th:href="@{/chat}">
+                    채팅
                     <span class="sr-only" th:if="${menu} == 'board'">(current)</span>
                 </a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/signin}">로그인</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/signup}">회원가입</a>
             </li>
         </ul>
     </div>

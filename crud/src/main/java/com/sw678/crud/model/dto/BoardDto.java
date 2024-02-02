@@ -1,6 +1,7 @@
 package com.sw678.crud.model.dto;
 
 import com.sw678.crud.model.entity.Board;
+import com.sw678.crud.model.entity.User;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -14,6 +15,7 @@ import java.time.LocalDateTime;
 public class BoardDto {
     private Long id;
     private String writer;
+    //private User user;
     private String title;
     private String content;
     private LocalDateTime createdAt;
