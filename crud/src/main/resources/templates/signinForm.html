@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <!-- Assuming you want to use Bootstrap 4, update the link accordingly if you are using a different version -->
+
     <style>
         .field-error {
             color: red;
@@ -13,6 +13,7 @@
 </head>
 
 <body>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" th:replace="fragments/common :: menu('home')"></nav>
 <div class="container">
     <div class="py-5 text-center">
         <h2>로그인</h2>
