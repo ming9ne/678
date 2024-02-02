@@ -16,8 +16,6 @@ public class Board extends BaseTimeEntity {
     @Column(name="post_id")
     private Long id; // 게시글 index
 
-    // private User user_id ; 유저 인덱스
-
 
     private String writer;
 
@@ -25,7 +23,9 @@ public class Board extends BaseTimeEntity {
     private String title; // 제목
 
     @Column(name="post_content")
+    @Lob
     private String content; // 내용
+
 
 
     // Java 디자인 패턴, 생성 시점에 값을 채워줌

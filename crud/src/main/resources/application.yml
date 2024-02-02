@@ -5,7 +5,7 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/sw678?useUnicode=true;characterEncoding=utf8;
     username: root
-    password: 960410
+    password: 1234
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
@@ -22,4 +22,21 @@ spring:
   thymeleaf:
     enabled: true
     encoding: UTF-8
-    mode: HTML5
+
+
+  # mail-config
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: sangjuncho232@gmail.com
+    password: ekai pxux alpd iplf
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+          connectiontimeout: 5000
+          timeout: 5000
+          writetimeout: 5000
+    auth-code-expiration-millis: 300000
