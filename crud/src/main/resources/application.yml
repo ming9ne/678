@@ -1,6 +1,7 @@
 spring:
   application:
     name: crud
+
   #database-config
   datasource:
     url: jdbc:mysql://localhost:3306/sw678?useUnicode=true;characterEncoding=utf8;
@@ -40,3 +41,16 @@ spring:
           timeout: 5000
           writetimeout: 5000
     auth-code-expiration-millis: 300000
+
+
+    eureka:
+      client:
+        register-with-eureka: true
+        fetch-registry: true
+        service-url:
+          defaultZone: http://localhost:8761/eureka
+      instance:
+        instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+        prefer-ip-address: true
+server:
+  port: 8080

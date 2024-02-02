@@ -44,6 +44,11 @@ spring:
           uri: lb://BOARD
           predicates:
             - Path=/api/v1/board/**
+        # CRUD
+        - id: crud
+          uri: lb://CRUD
+          predicates:
+            - Path=/crud/**
         # 유저
         - id: user-service
           uri: lb://USER-SERVICE

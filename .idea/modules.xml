@@ -3,21 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/678.iml" filepath="$PROJECT_DIR$/.idea/678.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/API.iml" filepath="$PROJECT_DIR$/.idea/modules/API.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/API.main.iml" filepath="$PROJECT_DIR$/.idea/modules/API.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/API.test.iml" filepath="$PROJECT_DIR$/.idea/modules/API.test.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/board.iml" filepath="$PROJECT_DIR$/.idea/modules/board.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/board.main.iml" filepath="$PROJECT_DIR$/.idea/modules/board.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/board.test.iml" filepath="$PROJECT_DIR$/.idea/modules/board.test.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/crud.iml" filepath="$PROJECT_DIR$/.idea/modules/crud.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/crud.main.iml" filepath="$PROJECT_DIR$/.idea/modules/crud.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/crud.test.iml" filepath="$PROJECT_DIR$/.idea/modules/crud.test.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/discovery-service.iml" filepath="$PROJECT_DIR$/.idea/modules/discovery-service.iml" group="discovery-service" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/discovery-service_main.iml" filepath="$PROJECT_DIR$/.idea/modules/discovery-service_main.iml" group="discovery-service" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/discovery-service_test.iml" filepath="$PROJECT_DIR$/.idea/modules/discovery-service_test.iml" group="discovery-service" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/gateway-service.iml" filepath="$PROJECT_DIR$/.idea/modules/gateway-service.iml" group="gateway-service" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/gateway-service_main.iml" filepath="$PROJECT_DIR$/.idea/modules/gateway-service_main.iml" group="gateway-service" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/gateway-service_test.iml" filepath="$PROJECT_DIR$/.idea/modules/gateway-service_test.iml" group="gateway-service" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/gateway-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/gateway-service.main.iml" />
     </modules>
   </component>
 </project>

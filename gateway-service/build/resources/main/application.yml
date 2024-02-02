@@ -34,41 +34,21 @@ spring:
             preLogger: true
             postLogger: true
       routes:
-        # 문화행사
-        - id: event-service
-          uri: lb://EVENT-SERVICE
+        # API
+        - id: api
+          uri: lb://api_service
           predicates:
-            - Path=/api/v1/event-service/**
+            - Path=/api/**
         # board
         - id: board
           uri: lb://BOARD
           predicates:
             - Path=/api/v1/board/**
-        # 혼잡도
-        - id: congestion-service
-          uri: lb://CONGESTION-SERVICE
+        # CRUD
+        - id: crud
+          uri: lb://CRUD
           predicates:
-            - Path=/api/v1/congestion-service/**
-        # 지역
-        - id: area-service
-          uri: lb://AREA-SERVICE
-          predicates:
-            - Path=/api/v1/area-service/**
-        # 따릉이
-        - id: sbike-service
-          uri: lb://SBIKE-SERVICE
-          predicates:
-            - Path=/api/v1/sbike-service/**
-        # 도시
-        - id: city-service
-          uri: lb://CITY-SERVICE
-          predicates:
-            - Path=/api/v1/city-service/**
-        # 쿠폰
-        - id: coupon-service
-          uri: lb://COUPON-SERVICE
-          predicates:
-            - Path=/api/v1/coupon-service/**
+            - Path=/crud/**
         # 유저
         - id: user-service
           uri: lb://USER-SERVICE
@@ -99,7 +79,3 @@ spring:
             - RemoveRequestHeader=Cookie
 #            - AuthorizationHeaderFilter
 #            - RewritePath=/api/v1/user-service/(?<segment>.*), /$\{segment}
-
-token:
-  expiration_time: 86400000
-  secret: dXNlcnRva2VudXNlcnRva2VudXNlcnRva2VudXNlcnRva2VudXNlcnRva2VudXNlcnRva2VudXNlcnRva2VudXNlcnRva2VudXNlcnRva2VudXNlcnRva2VudXNlcnRva2Vu
