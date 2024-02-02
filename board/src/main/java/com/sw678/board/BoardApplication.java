@@ -3,7 +3,7 @@ package com.sw678.board;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-// 0202 1124 test
+// 0202 1212 test2
 @SpringBootApplication
 public class BoardApplication {
 
