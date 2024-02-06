@@ -22,7 +22,7 @@ public class PollutionController {
         this.pollutionService = pollutionService;
     }
 
-    @GetMapping("/load")
+    @GetMapping("/loadPollutionData")
     public List<PollutionDto> loadData(){
         log.info("\nPollutionService.showAirPollutionByLocation 호출");
         return pollutionService.showAirPollutionByLocation();

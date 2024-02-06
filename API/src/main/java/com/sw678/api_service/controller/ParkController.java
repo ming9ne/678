@@ -23,7 +23,7 @@ public class ParkController {
         this.parkService = parkService;
     }
 
-    @GetMapping("/load")
+    @GetMapping("/loadParkData")
     public List<ParkDto> loadData(){
         // 공원 정보는 실시간으로 부를 필요 x
         // 프로젝트 시작 시에만 가져와서 db 업데이트하면 될듯.
