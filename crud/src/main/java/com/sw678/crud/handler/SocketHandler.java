@@ -1,4 +1,4 @@
-package com.sw678.crud.chat.handler;
+package com.sw678.crud.handler;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.CloseStatus;

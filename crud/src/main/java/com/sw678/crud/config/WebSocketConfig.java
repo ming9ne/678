@@ -1,6 +1,6 @@
-package com.sw678.crud.chat.config;
+package com.sw678.crud.config;
 
-import com.sw678.crud.chat.handler.SocketHandler;
+import com.sw678.crud.handler.SocketHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.socket.config.annotation.EnableWebSocket;
