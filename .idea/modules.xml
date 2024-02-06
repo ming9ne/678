@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/678.iml" filepath="$PROJECT_DIR$/.idea/678.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.sw678.crud.main.iml" filepath="$PROJECT_DIR$/.idea/modules/com.sw678.crud.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/crud.main.iml" filepath="$PROJECT_DIR$/.idea/modules/crud.main.iml" />
     </modules>
   </component>
 </project>
