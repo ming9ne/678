@@ -52,29 +52,46 @@ const Login = () => {
                   <img
                     alt="..."
                     src={
-                      require("../../assets/img/icons/common/github.svg")
-                        .default
-                    }
-                  />
-                </span>
-                <span className="btn-inner--text">Github</span>
-              </Button>
-              <Button
-                className="btn-neutral btn-icon"
-                color="default"
-                href="#pablo"
-                onClick={(e) => e.preventDefault()}
-              >
-                <span className="btn-inner--icon">
-                  <img
-                    alt="..."
-                    src={
                       require("../../assets/img/icons/common/google.svg")
                         .default
                     }
                   />
                 </span>
                 <span className="btn-inner--text">Google</span>
+              </Button>
+              <Button
+                  className="btn-neutral btn-icon"
+                  color="default"
+                  href="#pablo"
+                  onClick={(e) => e.preventDefault()}
+              >
+                <span className="btn-inner--icon">
+                  <img
+                      alt="..."
+                      src={
+                        require("../../assets/img/icons/common/btn_kakao.svg")
+                            .default
+                      }
+                  />
+                </span>
+                <span className="btn-inner--text">Kakao</span>
+              </Button>
+              <Button
+                  className="btn-neutral btn-icon"
+                  color="default"
+                  href="#pablo"
+                  onClick={(e) => e.preventDefault()}
+              >
+                <span className="btn-inner--icon">
+                  <img
+                      alt="..."
+                      src={
+                        require("../../assets/img/icons/common/btn_naver.svg")
+                            .default
+                      }
+                  />
+                </span>
+                <span className="btn-inner--text">Naver</span>
               </Button>
             </div>
           </CardHeader>
