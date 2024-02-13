@@ -1,11 +1,9 @@
-package com.sw678.crud.model.entity.user;
+package com.sw678.crud.model.entity.socialuser;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.json.simple.JSONObject;
 
 import java.util.Map;
-import java.util.Objects;
 
 @Data
 @AllArgsConstructor

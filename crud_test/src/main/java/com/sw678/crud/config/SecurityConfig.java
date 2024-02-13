@@ -1,44 +1,38 @@
 package com.sw678.crud.config;
 
-import com.sw678.crud.service.oauth.PrincipleUserService;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import com.sw678.crud.service.oauth.PrincipleOauth2UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.Customizer;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.AuthenticationFailureHandler;
-import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
-
-import java.io.IOException;
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig {
-    private PrincipleUserService principleUserService;
+public class SecurityConfig  {
+    private PrincipleOauth2UserService principleOauth2UserService;
 
     @Autowired
-    public SecurityConfig(PrincipleUserService principleUserService) {
-        this.principleUserService = principleUserService;
+    public SecurityConfig(PrincipleOauth2UserService principleOauth2UserService) {
+        this.principleOauth2UserService = principleOauth2UserService;
     }
+
+//    @Bean
+//    public AuthenticationManager authenticationManager(AuthenticationConfiguration auth) throws Exception {
+//        return auth.getAuthenticationManager();
+//    }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
         http.
                 csrf(AbstractHttpConfigurer::disable)       //다른 도메인에서 API 호출을 안 막음. Rest Api -> 브라우저 통해 request 받아서 꺼도 됨.
-                .cors(AbstractHttpConfigurer::disable)
-                .sessionManagement(s->s.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+                .cors(AbstractHttpConfigurer::disable);
+//                .sessionManagement(s->s.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
 
         http.
@@ -49,28 +43,36 @@ public class SecurityConfig {
                 );
 
         http
-                .formLogin((formLogin) -> formLogin
+                .formLogin(formLogin -> formLogin
                         .loginPage("/loginForm")
-//                        .loginProcessingUrl("/login")
+                        .loginProcessingUrl("/login")
                         .defaultSuccessUrl("/board/list")
+                        .usernameParameter("username")
+                        .passwordParameter("password")
                         .permitAll()
                 );
+
         http
                 .oauth2Login(oauth -> oauth
                         .loginPage("/loginForm")
                         .defaultSuccessUrl("/board/list")
                         .failureUrl("/login?error=true")
                         .userInfoEndpoint(userInfo -> userInfo
-                                .userService(principleUserService))
+                                .userService(principleOauth2UserService))
                 );
         http
                 .logout(logout -> logout
-                        .logoutSuccessUrl("/signin")
+                        // 로그아웃 요청을 처리할 URL 설정
+                        .logoutUrl("/logout")
+                        .logoutSuccessUrl("/login")
+                        .invalidateHttpSession(true)
+                        .deleteCookies("remember-me")
                 );
 
         return http.build();
 
     }
+
 }
 
 

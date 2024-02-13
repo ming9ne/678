@@ -2,7 +2,7 @@ package com.sw678.crud.service.oauth;
 
 import com.sw678.crud.model.entity.Role;
 import com.sw678.crud.model.entity.User;
-import com.sw678.crud.model.entity.user.*;
+import com.sw678.crud.model.entity.socialuser.*;
 import com.sw678.crud.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -16,13 +16,13 @@ import java.time.LocalDateTime;
 import java.util.Map;
 
 @Service
-public class PrincipleUserService extends DefaultOAuth2UserService {
+public class PrincipleOauth2UserService extends DefaultOAuth2UserService {
 
     private BCryptPasswordEncoder bCryptPasswordEncoder;
     private UserRepository userRepository;
 
     @Autowired
-    public PrincipleUserService(BCryptPasswordEncoder bCryptPasswordEncoder, UserRepository userRepository) {
+    public PrincipleOauth2UserService(BCryptPasswordEncoder bCryptPasswordEncoder, UserRepository userRepository) {
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
         this.userRepository = userRepository;
     }
@@ -30,9 +30,10 @@ public class PrincipleUserService extends DefaultOAuth2UserService {
 
     @Override
     public OAuth2User loadUser(OAuth2UserRequest request) throws OAuth2AuthenticationException {
+        String token = request.getAccessToken().getTokenValue();
         //"registraionId" 로 어떤 OAuth 로 로그인 했는지 확인 가능(google,naver등)
         System.out.println("getClientRegistration: "+ request.getClientRegistration());
-        System.out.println("getAccessToken: "+ request.getAccessToken().getTokenValue());
+        System.out.println("getAccessToken: "+ token);
         System.out.println("getAttributes: "+ super.loadUser(request).getAttributes());
         //구글 로그인 버튼 클릭 -> 구글 로그인창 -> 로그인 완료 -> code를 리턴(OAuth-Clien라이브러리가 받아줌) -> code를 통해서 AcssToken요청(access토큰 받음)
         // => "userRequest"가 감고 있는 정보
@@ -63,7 +64,7 @@ public class PrincipleUserService extends DefaultOAuth2UserService {
         String provider = oauth2UserInterface.getProvider(); //google , kakao
         String providerId = oauth2UserInterface.getProviderId();
         String username = provider + "_" + providerId;
-        String nickname = oauth2UserInterface.getName();
+        String nickname = oauth2UserInterface.getName() + "_" + provider;
         String password =  bCryptPasswordEncoder.encode("테스트"); // 패스워드 암호화 테스트
         String email = oauth2UserInterface.getEmail();
         Role role = Role.USER;
@@ -72,6 +73,7 @@ public class PrincipleUserService extends DefaultOAuth2UserService {
         System.out.println("provider : " + provider +
                         "\nproviderId : " + providerId +
                         "\nusername : " + username +
+                        "\ntoken : " + token +
                         "\npassword : " + password +
                         "\nemail : " + email +
                         "\nrole : " + role);
@@ -87,6 +89,7 @@ public class PrincipleUserService extends DefaultOAuth2UserService {
                     .password(password)
                     .email(email)
                     .role(role)
+                    .token(token)
                     .provider(provider)
                     .provideId(providerId)
                     .createDate(createTime)

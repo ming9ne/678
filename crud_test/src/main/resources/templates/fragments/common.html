@@ -34,11 +34,14 @@
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/signin}">로그인</a>
+                <a class="nav-link" th:href="@{/login}">로그인</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" th:href="@{/signup}">회원가입</a>
             </li>
+            <form method="post" action="/logout">
+                <button type="submit">로그아웃</button>
+            </form>
         </ul>
     </div>
 </nav>

@@ -1,4 +1,4 @@
-package com.sw678.crud.model.entity.user;
+package com.sw678.crud.model.entity.socialuser;
 
 import com.sw678.crud.model.entity.User;
 import lombok.Data;
@@ -29,6 +29,7 @@ public class UserDetail implements UserDetails, OAuth2User {
     ////////////////////////////////////////////
     /////  메소드 오버라이드
     ////////////////////////////////////////////
+
     @Override
     public Map<String, Object> getAttributes() {
         return attributes;
@@ -66,6 +67,7 @@ public class UserDetail implements UserDetails, OAuth2User {
     }
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
+
 }

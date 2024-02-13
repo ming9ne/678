@@ -26,18 +26,21 @@ public class User {
     private String nickname;
     @Enumerated(EnumType.STRING)
     private Role role;
+    private String token;
     private String provider;    // OAuth Type(google, kakao)
     private String provideId;   // OAuth key(id)
     private LocalDateTime createDate;
 
     @Builder
-    public User(Long id, String username, String password, String email, String nickname, Role role, String provider, String provideId, LocalDateTime createDate) {
+    public User(Long id, String username, String password, String email, String nickname, Role role,
+                String token, String provider, String provideId, LocalDateTime createDate) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.email = email;
         this.nickname = nickname;
         this.role = role;
+        this.token = token;
         this.provider = provider;
         this.provideId = provideId;
         this.createDate = createDate;
