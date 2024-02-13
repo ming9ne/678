@@ -1,6 +1,6 @@
-package com.sw678.crud.chat.controller;
+package com.sw678.crud.controller;
 
-import com.sw678.crud.chat.model.Chatting;
+import com.sw678.crud.model.entity.Chatting;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

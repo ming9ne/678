@@ -50,6 +50,8 @@ dependencies {
     implementation 'io.github.resilience4j:resilience4j-spring-boot2:2.1.0'
     implementation 'io.github.resilience4j:resilience4j-circuitbreaker:2.0.2'
     implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
 }
 
 dependencyManagement {

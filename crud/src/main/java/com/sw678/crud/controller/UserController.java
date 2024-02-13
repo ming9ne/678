@@ -11,7 +11,10 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Random;
 
@@ -30,27 +33,28 @@ public class UserController {
             this.mailSender = mailSender;
         }*/
 
-    @GetMapping("/signin")
+    @GetMapping("/login")
     public String signinForm(Model model) {
         model.addAttribute("signinDto", new SignupDto());
 
-        return "signinForm";
+        return "loginForm";
     }
 
-    @PostMapping("/signin")
+    @PostMapping("/login")
     public String signinForm(@Valid SigninDto signinDto, BindingResult bindingResult) {
 
         // 검증 실패시
         if (bindingResult.hasErrors()) {
-            return "signinForm";
+            return "loginForm";
         }
 
         // 로그인 시도
         User loginUser = userService.login(signinDto);
+        System.out.println(loginUser);
 
         if (loginUser == null) {
             bindingResult.reject("loginFail", "아이디나 비밀번호가 일치하지 않습니다.");
-            return "signinForm";
+            return "loginForm";
         }
 
         System.out.println("로그인 성공입니다.");
@@ -75,10 +79,9 @@ public class UserController {
         }
 
         // 회원가입 로직
-        User user = signupDto.toEntity();
-        userService.signup(user);
+        userService.signup(signupDto);
 
-        return "redirect:/signin";
+        return "redirect:/login";
     }
 
     //////////////////////////////////////

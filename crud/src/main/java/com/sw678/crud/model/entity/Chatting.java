@@ -1,4 +1,4 @@
-package com.sw678.crud.chat.model;
+package com.sw678.crud.model.entity;
 
 import lombok.Getter;
 
