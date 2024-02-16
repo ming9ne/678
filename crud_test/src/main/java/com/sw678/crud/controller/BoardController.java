@@ -48,8 +48,8 @@ public class BoardController {
     }
 
     @PostMapping("post")
-    public String write(BoardDto boardDto){
-        boardService.savePost(boardDto);
+    public String write(BoardDto boardDto, @AuthenticationPrincipal UserDetail user){
+        boardService.savePost(boardDto, user.getUser().getId());
         return "redirect:/board/list";
     }
 
@@ -80,8 +80,8 @@ public class BoardController {
 
     //put 메서드를 이용해 게시물 수정한 부분에 대해 적용
     @PutMapping("/post/edit/{no}")
-    public String update(BoardDto boardDto){
-        boardService.savePost(boardDto);
+    public String update(BoardDto boardDto, @AuthenticationPrincipal UserDetail user){
+        boardService.savePost(boardDto, user.getUser().getId());
 
         return "redirect:/board/list";
     }

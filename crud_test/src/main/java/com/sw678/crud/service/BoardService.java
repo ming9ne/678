@@ -2,8 +2,10 @@ package com.sw678.crud.service;
 
 import com.sw678.crud.model.dto.BoardDto;
 import com.sw678.crud.model.entity.Board;
+import com.sw678.crud.model.entity.User;
 import com.sw678.crud.repository.BoardRepository;
 
+import com.sw678.crud.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -22,6 +24,7 @@ import java.util.Optional;
 public class BoardService {
 
     private final BoardRepository boardRepository;
+    private final UserRepository userRepository;
 
     private static final int BLOCK_PAGE_NUM_COUNT = 5; // 블럭에 존재하는 페이지 번호 수
     private static final int PAGE_POST_COUNT = 10; // 한 페이지에 존재하는 게시글 수
@@ -75,8 +78,11 @@ public class BoardService {
 
     // create or update
     @Transactional
-    public Long savePost(BoardDto boardDto) {
-        return boardRepository.save(boardDto.toEntity()).getId();
+    public Long savePost(BoardDto boardDto, Long id) {
+        Optional<User> user = userRepository.findById(id);
+        Board board = boardDto.toEntity();
+        board.setUser(user.get());
+        return boardRepository.save(board).getId();
     }
 
     //delete

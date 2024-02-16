@@ -19,28 +19,36 @@ import java.util.Optional;
 @RequestMapping("/comment")
 public class CommentController {
     private final CommentService commentService;
-    private final CommentRepository commentRepository;
 
     @PostMapping("/{id}/write")
     public String addComment(@PathVariable("id") Long id, String content, @AuthenticationPrincipal UserDetail user) {
-        System.out.println(user);
         commentService.addComment(id, content, user.getUsername());
+        System.out.println("DB 댓글 작성 완료...");
         return "redirect:/board/post/" + id;
     }
 
     @PostMapping("/{commentId}/{boardId}/update")
     public String editComment(@PathVariable Long commentId, @PathVariable Long boardId , String content){
-
         commentService.updateComment(commentId, content);
-        System.out.println("update Success!");
+        System.out.println("DB 수정 작업 완료...");
         return "redirect:/board/post/" + boardId;
     }
 
     @GetMapping("/{commentId}/{boardId}/delete")
-    public String deleteComment(@PathVariable("commentId") Long commentId, @PathVariable Long boardId
-            , @AuthenticationPrincipal UserDetail user) {
-
+    public String deleteComment(@PathVariable("commentId") Long commentId, @PathVariable Long boardId) {
         commentService.deleteComment(commentId);
+        System.out.println("DB 삭제 작업 완료...");
         return "redirect:/board/post/" + boardId;
     }
+
+    @PostMapping("/{commentId}/{boardId}/reply")
+    public String addReply(@PathVariable Long commentId, @PathVariable Long boardId , String content
+            , @AuthenticationPrincipal UserDetail user){
+
+        commentService.addReply(user.getUsername(), commentId, boardId, content);
+        System.out.println("DB 대댓글 작성 완료...");
+        return "redirect:/board/post/" + boardId;
+    }
+
+
 }

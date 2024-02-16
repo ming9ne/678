@@ -24,17 +24,7 @@ public class CommentDto {
 
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-    private Comment parentComment;
-    private List<Comment> childComment = new ArrayList<>();
+    private Comment parent;
+    private List<Comment> child = new ArrayList<>();
 
-    public Comment toEntity(){
-        return Comment.builder()
-                .id(id)
-                .content(content)
-                .parentComment(parentComment)
-                .childComment(childComment)
-                .createdAt(createdAt)
-                .updatedAt(updatedAt)
-                .build();
-    }
 }

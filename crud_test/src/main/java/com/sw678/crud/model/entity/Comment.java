@@ -1,6 +1,8 @@
 package com.sw678.crud.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.sw678.crud.model.dto.CommentDto;
 import jakarta.persistence.*;
@@ -17,23 +19,17 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Setter
 @Getter
 @Table(name = "comment")
-public class Comment{
+public class Comment extends BaseTimeEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(length = 500)
     private String content;
-
-    @CreatedDate // 생성 시간 자동 저장
-    @Column(name = "created_at")
-    private LocalDateTime createdAt;
-
-    @Column(name = "updated_at")
-    @LastModifiedDate // 수정 시간 자동 저장
-    private LocalDateTime updatedAt;
 
     @ManyToOne
     @JoinColumn(name = "post_id")
@@ -46,19 +42,19 @@ public class Comment{
     @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "parent_id")
-    private Comment parentComment; //부모 댓글
+    private Comment parent; //부모 댓글
 
     @JsonManagedReference
-    @OneToMany(mappedBy = "parentComment", orphanRemoval = true)
-    private List<Comment> childComment = new ArrayList<>(); //자식 댓글들(대댓글)
+    @OneToMany(mappedBy = "parent", orphanRemoval = true)
+    private List<Comment> child = new ArrayList<>(); //자식 댓글들(대댓글)
 
     static public Comment initComment(String content, User user, Board board) {
         return Comment.builder()
                 .board(board)
                 .user(user)
                 .content(content)
-                .parentComment(null)
-                .childComment(null)
+                .parent(null)
+                .child(null)
                 .build();
     }
 
@@ -74,8 +70,8 @@ public class Comment{
                 .content(content)
                 .board(board)
                 .user(user)
-                .parentComment(parentComment)
-                .childComment(childComment)
+                .parent(parent)
+                .child(child)
                 .build();
     }
 
