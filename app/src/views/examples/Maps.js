@@ -18,7 +18,7 @@ function KakaoMapWithMarker() {
         const fetchParkData = async () => {
             try {
                 const response = await fetch(
-                    "http://192.168.219.110:8080/api/v1/park-service/load"
+                    "http://192.168.219.107:8080/api/v1/park-service/load"
                 );
                 if (response.ok) {
                     const data = await response.json();
@@ -34,7 +34,7 @@ function KakaoMapWithMarker() {
         const fetchPollutionData = async () => {
             try {
                 const response = await fetch(
-                    "http://192.168.219.110:8080/api/v1/pollution-service/load"
+                    "http://192.168.219.107:8080/api/v1/pollution-service/load"
                 );
                 if (response.ok) {
                     const data = await response.json();
