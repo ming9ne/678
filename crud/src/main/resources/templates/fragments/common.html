@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:fragment="head(title)">
     <!-- Required meta tags -->
     <meta charset="utf-8" />
@@ -21,7 +21,7 @@
         <ul class="navbar-nav mr-auto">
             <li class="nav-item" th:classappend="${menu} == 'home'? 'active'">
                 <a class="nav-link" href="#" th:href="@{/board/list}">
-                    홈
+                    게시판
                     <span class="sr-only" th:if="${menu} == 'home'">(current)</span>
                 </a>
             </li>
@@ -33,12 +33,15 @@
             </li>
         </ul>
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
+            <li class="nav-item" sec:authorize="isAnonymous()">
                 <a class="nav-link" th:href="@{/login}">로그인</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" th:href="@{/signup}">회원가입</a>
             </li>
+            <form method="post" action="/logout">
+                <button type="submit">로그아웃</button>
+            </form>
         </ul>
     </div>
 </nav>

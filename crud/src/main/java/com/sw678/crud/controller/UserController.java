@@ -6,6 +6,7 @@ import com.sw678.crud.model.entity.User;
 import com.sw678.crud.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
@@ -19,19 +20,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.Random;
 
 @Controller
-@RequiredArgsConstructor
+
 public class UserController {
 
     private final UserService userService;
     private final JavaMailSender mailSender;
-    // private JavaMailSender mailSender;
     private static final String FROM_ADDRESS = "sangjuncho232@gmail.com";
 
-       /* @Autowired
+        @Autowired
         public UserController(UserService userService, JavaMailSender mailSender) {
             this.userService = userService;
             this.mailSender = mailSender;
-        }*/
+        }
 
     @GetMapping("/login")
     public String signinForm(Model model) {
@@ -41,7 +41,7 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String signinForm(@Valid SigninDto signinDto, BindingResult bindingResult) {
+    public String loginForm(@Valid SigninDto signinDto, BindingResult bindingResult) {
 
         // 검증 실패시
         if (bindingResult.hasErrors()) {
@@ -78,10 +78,11 @@ public class UserController {
             return "signupForm";
         }
 
+
         // 회원가입 로직
         userService.signup(signupDto);
 
-        return "redirect:/signin";
+        return "redirect:/login";
     }
 
     //////////////////////////////////////
