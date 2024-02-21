@@ -13,7 +13,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("http://localhost:3000", "http://192.168.200.105:8100")
+                .allowedOrigins("http://localhost:3000", "http://192.168.219.110:8100")
                 .allowedMethods("GET", "POST", "PUT", "DELETE")
                 .allowedHeaders("Origin", "Content-Type", "Accept")
                 .allowCredentials(true);
@@ -21,7 +21,7 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/resources/**")
-                .addResourceLocations("classpath:/resources/");
+        registry.addResourceHandler("/**")
+                .addResourceLocations("classpath:/templates/");
     }
 }

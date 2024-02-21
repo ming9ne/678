@@ -35,18 +35,40 @@
             <input type="password" id="password" th:field="*{password}" class="form-control" th:errorclass="field-error" required="required">
             <div class="field-error" th:errors="*{password}" />
         </div>
-        <div class="row-justify-content-center">
+        <div class="row justify-content-center mb-4">
             <div class="col-md-6"> <!-- Adjust the width by changing the column size -->
-                <button type="submit" class="btn btn-primary btn-lg btn-block">로그인</button>
-                <button type="button">
-                    <img src="/images/kakao_    .png" alt="카카오로 로그인 하기" onclick="location.href='/oauth2/authorization/kakao'" >
-                </button>
-                <button type="button">
-                    <img src="/images/login_naver.ai" alt="네이버 로그인 하기" onclick="location.href='/oauth2/authorization/naver'" >
-                </button>
-                <button type="button">
-                    <img src="/images/googleBtn.svg" alt="구글로 로그인 하기" onclick="location.href='/oauth2/authorization/google'" >
-                </button>
+                <div class="row">
+                    <div class="col">
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">로그인</button>
+                    </div>
+                    <div class="col">
+                        <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="location.href='/signup'">
+                            회원가입
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col">
+                        <button type="button">
+                            <img src="/img/kakao.png" alt="KaKao" onclick="location.href='/oauth2/authorization/kakao'" >
+                        </button>
+                    </div>
+                    <div class="col">
+                        <button type="button">
+                            <img src="/img/naver.png" alt="Naver" onclick="location.href='/oauth2/authorization/naver'" >
+                        </button>
+                    </div>
+                    <div class="col">
+                        <button type="button">
+                            <img src="/img/google.png" alt="Google" onclick="location.href='/oauth2/authorization/google'" >
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </form>

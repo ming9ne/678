@@ -37,6 +37,26 @@
                     <span class="sr-only" th:if="${menu} == 'map'">(current)</span>
                 </a>
             </li>
+            <li class="nav-item" th:classappend="${menu} == 'chat'? 'active'">
+                <a class="nav-link" href="#" th:href="@{/chat}">
+                    채팅
+                    <span class="sr-only" th:if="${menu} == 'chat'">(current)</span>
+                </a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item" th:classappend="${menu} == 'login'? 'active'">
+                <a class="nav-link" href="#" th:href="@{/login}">
+                    로그인
+                    <span class="sr-only" th:if="${menu} == 'login'">(current)</span>
+                </a>
+            </li>
+            <li class="nav-item" th:classappend="${menu} == 'signup'? 'active'">
+                <a class="nav-link" href="#" th:href="@{/signup}">
+                    회원가입
+                    <span class="sr-only" th:if="${menu} == 'signup'">(current)</span>
+                </a>
+            </li>
         </ul>
     </div>
 </nav>
