@@ -1,0 +1,258 @@
+
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
+    <link href="css/starter-template.css" rel="stylesheet"/>
+    <style>
+        * {box-sizing:border-box}
+
+        /* Navbar styling with adjusted z-index */
+        .navbar {
+            z-index: 1;
+            position: fixed;
+            width: 100%;
+            top: 0;
+        }
+
+        /* Slideshow container */
+        .slideshow-container {
+            max-width: 1000px;
+            position: relative;
+            margin: auto;
+            margin-top: 50px; /* Adjusted top margin to make space for the navigation bar */
+        }
+
+        /* Hide the images by default */
+        .mySlides {
+            display: none;
+        }
+
+        /* Next & previous buttons */
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            margin-top: -22px;
+            padding: 16px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+        }
+
+        /* Position the "next button" to the right */
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        /* On hover, add a black background color with a little bit see-through */
+        .prev:hover, .next:hover {
+            background-color: rgba(0,0,0,0.8);
+        }
+
+        /* Caption text */
+        .text {
+            color: #f2f2f2;
+            font-size: 15px;
+            padding: 8px 12px;
+            position: absolute;
+            bottom: 8px;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Number text (1/3 etc) */
+        .numbertext {
+            color: #f2f2f2;
+            font-size: 12px;
+            padding: 8px 12px;
+            position: absolute;
+            top: 0;
+        }
+
+        /* The dots/bullets/indicators */
+        .dot {
+            cursor: pointer;
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 2.0s ease;
+        }
+
+        .active, .dot:hover {
+            background-color: #717171;
+        }
+
+        /* Fading animation */
+        .fade {
+            -webkit-animation-name: fade;
+            -webkit-animation-duration: 8s;
+            animation-name: fade;
+            animation-duration: 8s;
+        }
+
+        @-webkit-keyframes fade {
+            from {opacity: .4}
+            to {opacity: 1}
+        }
+
+        @keyframes fade {
+            from {opacity: .4}
+            to {opacity: 1}
+        }
+
+        /* Adjusted style to position images below the navigation bar */
+        .slideshow-container img {
+            margin-top: 50px; /* Adjusted margin-top value */
+        }
+    </style>
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" th:replace="fragments/common :: menu('home')"></nav>
+
+<!-- Slideshow container -->
+<div class="slideshow-container">
+    <!-- Full-width images with number and caption text -->
+
+    <!-- Info-->
+    <div class="mySlides fade" onclick="location.href='/board/mainPage'">
+        <div class="numbertext">1 / 8</div>
+        <img src="https://ifh.cc/g/zOS2qk.jpg" style="width:100%">
+        <div class="text">Caption Text</div>
+    </div>
+
+    <!-- signup-->
+<!--    <div class="mySlides fade">-->
+<!--        <div class="numbertext">2 / 8</div>-->
+<!--        <img src="https://ifh.cc/g/LG9hz7.png" style="width:100%">-->
+<!--        <div class="text">Caption Text</div>-->
+<!--    </div>-->
+    <div class="mySlides fade" onclick="location.href='/signup'">
+        <div class="numbertext">2 / 8</div>
+        <img src="https://ifh.cc/g/LG9hz7.png" style="width:100%">
+        <div class="text">Caption Text</div>
+    </div>
+
+    <!-- login-->
+    <div class="mySlides fade" onclick="location.href='/login'">
+        <div class="numbertext">3 / 8</div>
+        <img src="https://ifh.cc/g/19bd9K.png" style="width:100%">
+        <div class="text">Caption Two</div>
+    </div>
+    <!-- board-->
+    <div class="mySlides fade" onclick="location.href='/board/list'">
+        <div class="numbertext">4 / 8</div>
+        <img src="https://ifh.cc/g/63jS61.jpg" style="width:100%">
+        <div class="text">Caption Three</div>
+    </div>
+    <!-- map-->
+    <div class="mySlides fade" onclick="location.href='/board/map'">
+        <div class="numbertext">5 / 8</div>
+        <img src="https://ifh.cc/g/1CmDZ8.jpg" style="width:100%">
+        <div class="text">Caption Four</div>
+    </div>
+    <!-- parkinfo-->
+    <div class="mySlides fade" onclick="location.href='/board/map'">
+        <div class="numbertext">6 / 7</div>
+        <img src="https://ifh.cc/g/wq01of.jpg" style="width:100%">
+        <div class="text">Caption Five</div>
+    </div>
+    <!-- pminfo-->
+    <div class="mySlides fade" onclick="location.href='/board/map'">
+        <div class="numbertext">7 / 8</div>
+        <img src="https://ifh.cc/g/aBRPsF.jpg" style="width:100%">
+        <div class="text">Caption Six</div>
+    </div>
+    <!-- chat-->
+    <div class="mySlides fade" onclick="location.href='/chat'">>
+        <div class="numbertext">8 / 8</div>
+        <img src="https://ifh.cc/g/GQRqKF.png" style="width:100%">
+        <div class="text">Caption Seven</div>
+    </div>
+
+    <!-- Next and previous buttons -->
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>
+<br>
+<!-- The dots/circles -->
+<div style="text-align:center">
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
+    <span class="dot" onclick="currentSlide(4)"></span>
+    <span class="dot" onclick="currentSlide(5)"></span>
+    <span class="dot" onclick="currentSlide(6)"></span>
+    <span class="dot" onclick="currentSlide(7)"></span>
+    <span class="dot" onclick="currentSlide(8)"></span>
+</div>
+<script>
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    // Next/previous controls
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    // Thumbnail image controls
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    // Automatic slideshow
+    var slideInterval;
+
+    function startAutoSlide() {
+        slideInterval = setInterval(function() {
+            plusSlides(1);
+        }, 8000);
+    }
+
+    function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("dot");
+        if (n > slides.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex-1].style.display = "block";
+        dots[slideIndex-1].className += " active";
+    }
+
+    // Start automatic slideshow when the page loads
+    startAutoSlide();
+
+    // Clear the automatic slideshow interval when user interacts with the slideshow
+    document.getElementById("slideshow-container").addEventListener("mouseenter", function() {
+        clearInterval(slideInterval);
+    });
+
+    // Restart automatic slideshow when user stops interacting with the slideshow
+    document.getElementById("slideshow-container").addEventListener("mouseleave", function() {
+        startAutoSlide();
+    });
+</script>
+
+</body>
+</html>

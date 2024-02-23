@@ -12,7 +12,7 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" th:fragment="menu(menu)">
-    <a class="navbar-brand" href="#" th:href="@{/board/list}">산책 메이트</a>
+    <a class="navbar-brand" href="#">산책 합시다</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -20,24 +20,42 @@
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item" th:classappend="${menu} == 'home'? 'active'">
-                <a class="nav-link" href="#" th:href="@{/board/list}">
+                <a class="nav-link" href="#" th:href="@{/board/mainPage}">
                     홈
-                    <span class="sr-only" th:if="${menu} == 'home'">(current)</span>
+                    <span class="sr-only" th:if="${menu} == 'mainPage'">(current)</span>
                 </a>
             </li>
             <li class="nav-item" th:classappend="${menu} == 'board'? 'active'">
+                <a class="nav-link" href="#" th:href="@{/board/list}">
+                    게시판
+                    <span class="sr-only" th:if="${menu} == 'board'">(current)</span>
+                </a>
+            </li>
+            <li class="nav-item" th:classappend="${menu} == 'map'? 'active'">
+                <a class="nav-link" href="#" th:href="@{/board/map}">
+                    지도
+                    <span class="sr-only" th:if="${menu} == 'map'">(current)</span>
+                </a>
+            </li>
+            <li class="nav-item" th:classappend="${menu} == 'chat'? 'active'">
                 <a class="nav-link" href="#" th:href="@{/chat}">
                     채팅
-                    <span class="sr-only" th:if="${menu} == 'board'">(current)</span>
+                    <span class="sr-only" th:if="${menu} == 'chat'">(current)</span>
                 </a>
             </li>
         </ul>
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/signin}">로그인</a>
+            <li class="nav-item" th:classappend="${menu} == 'login'? 'active'">
+                <a class="nav-link" href="#" th:href="@{/login}">
+                    로그인
+                    <span class="sr-only" th:if="${menu} == 'login'">(current)</span>
+                </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/signup}">회원가입</a>
+            <li class="nav-item" th:classappend="${menu} == 'signup'? 'active'">
+                <a class="nav-link" href="#" th:href="@{/signup}">
+                    회원가입
+                    <span class="sr-only" th:if="${menu} == 'signup'">(current)</span>
+                </a>
             </li>
         </ul>
     </div>

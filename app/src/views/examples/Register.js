@@ -1,182 +1,180 @@
-/*!
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-=========================================================
-* Argon Dashboard React - v1.2.4
-=========================================================
+const SignupForm = () => {
+  const navigate = useNavigate();
 
-* Product Page: https://www.creative-tim.com/product/argon-dashboard-react
-* Copyright 2024 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/argon-dashboard-react/blob/master/LICENSE.md)
+  const [signupData, setSignupData] = useState({
+    username: '',
+    password: '',
+    email: '',
+    check_num: '',
+  });
 
-* Coded by Creative Tim
+  const [emailAuth, setEmailAuth] = useState('');
+  const [isSignupDisabled, setSignupDisabled] = useState(true);
 
-=========================================================
+  const sendAuthToMail = () => {
+    const { email } = signupData;
 
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+    if (email === '') {
+      alert('인증가능한 이메일을 입력해주세요.');
+      return;
+    }
 
-*/
+    fetch(`http://localhost:8080/emailAuth?email=${email}`)
+        .then(response => response.json())
+        .then(data => {
+          console.log("인증번호 :", data);
+          alert('인증번호가 발송되었습니다.');
+          // 숫자로만 이루어진 문자열로 변환
+          setEmailAuth(String(data));
+        })
+        .catch(error => {
+          alert('메일 발송에 실패했습니다.');
+        });
+  };
 
-// reactstrap components
-import {
-  Button,
-  Card,
-  CardHeader,
-  CardBody,
-  FormGroup,
-  Form,
-  Input,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroup,
-  Row,
-  Col,
-} from "reactstrap";
+  const checkAuth = () => {
+    const { check_num } = signupData;
+    console.log('check_num:', check_num); // 디버깅을 위한 콘솔 메시지
+    if (check_num !== '' && check_num === emailAuth) {
+      alert('인증번호 확인완료');
+      setSignupDisabled(false);
+    } else {
+      alert('인증번호가 올바르지 않습니다.');
+      setSignupDisabled(true);
+    }
+  };
 
-const Register = () => {
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setSignupData(prevData => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // 회원가입 정보를 서버로 전송
+    fetch('http://192.168.219.110:8080/signup', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: signupData.username,
+        password: signupData.password,
+        email: signupData.email,
+        check_num: signupData.check_num,
+      }),
+    })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then(data => {
+          console.log('Signup data submitted:', data);
+
+          // 회원가입 성공 후 로그인 페이지로 이동
+          navigate('/login');
+        })
+        .catch(error => {
+          console.error('Error submitting signup data:', error.message);
+          // 에러 처리 로직을 추가할 수 있습니다.
+        });
+  };
+
   return (
-    <>
-      <Col lg="6" md="8">
-        <Card className="bg-secondary shadow border-0">
-          <CardHeader className="bg-transparent pb-5">
-            <div className="text-muted text-center mt-2 mb-4">
-              <small>Sign up with</small>
+      <div className="container">
+        <div className="py-5 text-center">
+          <h2>회원가입</h2>
+        </div>
+
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label htmlFor="username">아이디</label>
+            <input
+                type="text"
+                className="form-control"
+                id="username"
+                required
+                onChange={handleInputChange}
+                name="username"
+                value={signupData.username}
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="password">비밀번호</label>
+            <input
+                type="password"
+                className="form-control"
+                id="password"
+                required
+                onChange={handleInputChange}
+                name="password"
+                value={signupData.password}
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="email">이메일</label>
+            <div>
+              <input
+                  type="email"
+                  className="form-control"
+                  id="email"
+                  required
+                  onChange={handleInputChange}
+                  name="email"
+                  value={signupData.email}
+              />
+              <br />
+              <button type="button" className="btn btn-secondary" onClick={sendAuthToMail}>
+                인증번호 발송
+              </button>
             </div>
-            <div className="text-center">
-              <Button
-                className="btn-neutral btn-icon"
-                color="default"
-                href="#pablo"
-                onClick={(e) => e.preventDefault()}
-              >
-                <span className="btn-inner--icon">
-                  <img
-                    alt="..."
-                    src={
-                      require("../../assets/img/icons/common/google.svg")
-                        .default
-                    }
-                  />
-                </span>
-                <span className="btn-inner--text">Google</span>
-              </Button>
-              <Button
-                  className="btn-neutral btn-icon mr-4"
-                  color="default"
-                  href="#pablo"
-                  onClick={(e) => e.preventDefault()}
-              >
-                <span className="btn-inner--icon">
-                  <img
-                      alt="..."
-                      src={
-                        require("../../assets/img/icons/common/btn_kakao.svg")
-                            .default
-                      }
-                  />
-                </span>
-                <span className="btn-inner--text">Kakao</span>
-              </Button>
-              <Button
-                  className="btn-neutral btn-icon mr-4"
-                  color="default"
-                  href="#pablo"
-                  onClick={(e) => e.preventDefault()}
-              >
-                <span className="btn-inner--icon">
-                  <img
-                      alt="..."
-                      src={
-                        require("../../assets/img/icons/common/btn_naver.svg")
-                            .default
-                      }
-                  />
-                </span>
-                <span className="btn-inner--text">Naver</span>
-              </Button>
-            </div>
-          </CardHeader>
-          <CardBody className="px-lg-5 py-lg-5">
-            <div className="text-center text-muted mb-4">
-              <small>Or sign up with credentials</small>
-            </div>
-            <Form role="form">
-              <FormGroup>
-                <InputGroup className="input-group-alternative mb-3">
-                  <InputGroupAddon addonType="prepend">
-                    <InputGroupText>
-                      <i className="ni ni-hat-3" />
-                    </InputGroupText>
-                  </InputGroupAddon>
-                  <Input placeholder="Name" type="text" />
-                </InputGroup>
-              </FormGroup>
-              <FormGroup>
-                <InputGroup className="input-group-alternative mb-3">
-                  <InputGroupAddon addonType="prepend">
-                    <InputGroupText>
-                      <i className="ni ni-email-83" />
-                    </InputGroupText>
-                  </InputGroupAddon>
-                  <Input
-                    placeholder="Email"
-                    type="email"
-                    autoComplete="new-email"
-                  />
-                </InputGroup>
-              </FormGroup>
-              <FormGroup>
-                <InputGroup className="input-group-alternative">
-                  <InputGroupAddon addonType="prepend">
-                    <InputGroupText>
-                      <i className="ni ni-lock-circle-open" />
-                    </InputGroupText>
-                  </InputGroupAddon>
-                  <Input
-                    placeholder="Password"
-                    type="password"
-                    autoComplete="new-password"
-                  />
-                </InputGroup>
-              </FormGroup>
-              <div className="text-muted font-italic">
-                <small>
-                  password strength:{" "}
-                  <span className="text-success font-weight-700">strong</span>
-                </small>
-              </div>
-              <Row className="my-4">
-                <Col xs="12">
-                  <div className="custom-control custom-control-alternative custom-checkbox">
-                    <input
-                      className="custom-control-input"
-                      id="customCheckRegister"
-                      type="checkbox"
-                    />
-                    <label
-                      className="custom-control-label"
-                      htmlFor="customCheckRegister"
-                    >
-                      <span className="text-muted">
-                        I agree with the{" "}
-                        <a href="#pablo" onClick={(e) => e.preventDefault()}>
-                          Privacy Policy
-                        </a>
-                      </span>
-                    </label>
-                  </div>
-                </Col>
-              </Row>
-              <div className="text-center">
-                <Button className="mt-4" color="primary" type="button">
-                  Create account
-                </Button>
-              </div>
-            </Form>
-          </CardBody>
-        </Card>
-      </Col>
-    </>
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="check_num">인증번호</label>
+            <input
+                type="text"
+                className="form-control"
+                id="check_num"
+                required
+                onChange={handleInputChange}
+                name="check_num"
+                value={signupData.check_num}
+            />
+            <br />
+            <button type="button" className="btn btn-secondary" onClick={checkAuth}>
+              인증번호 확인
+            </button>
+          </div>
+
+          <br />
+
+          <div className="form-group" style={{ textAlign: 'center' }}>
+            <button
+                type="submit"
+                className="btn btn-primary"
+                style={{ display: 'inline-block' }}
+                disabled={isSignupDisabled}
+            >
+              회원가입
+            </button>
+          </div>
+        </form>
+        <br />
+      </div>
   );
 };
 
-export default Register;
+export default SignupForm;
+

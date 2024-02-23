@@ -81,4 +81,16 @@ public class BoardController {
         return "redirect:/board/list";
     }
 
+
+    @GetMapping("/map")
+    public String showMap(Model model) {
+        // 여기에서 지도 페이지를 보여주는 로직을 추가할 수 있습니다.
+        return "board/map";
+    }
+
+    @GetMapping("/mainPage")
+    public String showMain(Model model) {
+        // 여기에서 지도 페이지를 보여주는 로직을 추가할 수 있습니다.
+        return "board/mainPage";
+    }
 }

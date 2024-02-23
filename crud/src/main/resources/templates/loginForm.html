@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Assuming you want to use Bootstrap 4, update the link accordingly if you are using a different version -->
+    <style>
+        .button {
+            border: none; /* 버튼 테두리 없앰 */
+            background: none; /* 배경 없앰 */
+            padding: 0; /* 내부 여백 없앰 */
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .button img {
+            width: 100%; /* 부모 요소의 너비에 맞게 이미지 크기 조정 */
+            height: auto; /* 가로 비율에 맞추어 세로 크기 자동 조정 */
+        }
+
+    </style>
+
+
+</head>
+
+<body>
+<div class="container">
+    <div class="py-5 text-center">
+        <h2>로그인</h2>
+    </div>
+
+    <form action="/login" th:object="${signinDto}" method="post">
+        <div th:if="${#fields.hasGlobalErrors()}" class="alert alert-danger">
+            <p th:each="err: ${#fields.globalErrors()}" th:text="${err}">전체 오류 메시지</p>
+        </div>
+
+        <div class="form-group">
+            <label for="username">아이디</label>
+            <input type="text" id="username" th:field="*{username}" class="form-control" th:errorclass="field-error" required="required">
+            <div class="field-error" th:errors="*{username}" />
+        </div>
+        <div class="form-group">
+            <label for="password">비밀번호</label>
+            <input type="password" id="password" th:field="*{password}" class="form-control" th:errorclass="field-error" required="required">
+            <div class="field-error" th:errors="*{password}" />
+        </div>
+        <div class="row justify-content-center mb-4">
+            <div class="col-md-6"> <!-- Adjust the width by changing the column size -->
+                <div class="row">
+                    <div class="col">
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">로그인</button>
+                    </div>
+                    <div class="col">
+                        <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="location.href='/signup'">
+                            회원가입
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col">
+                            <button type="button" style="border: none;">
+                                <img src="https://ifh.cc/g/nnFRJL.png" alt="KaKao" onclick="location.href='/oauth2/authorization/kakao'">
+                            </button>
+                        </div>
+                        <div class="col">
+                            <button type="button" style="border: none;">
+                                <img src="https://ifh.cc/g/cGJSqD.png" alt="Naver" onclick="location.href='/oauth2/authorization/naver'">
+                            </button>
+                        </div>
+                        <div class="col">
+                            <button type="button" style="border: none;">
+                                <img src="https://ifh.cc/g/jKO6Lq.png" alt="Google" onclick="location.href='/oauth2/authorization/google'">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
