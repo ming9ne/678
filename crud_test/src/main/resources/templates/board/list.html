@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head th:replace="fragments/common :: head('게시판입니다.')">
     <!-- @{...}는 타임리프의 기본 링크 표현 구문 -->
     <!-- Required meta tags -->
@@ -60,7 +60,6 @@
             <!-- 글쓰기 버튼 -->
             <a style="float: right" class="btn btn-primary" th:href="@{/board/post}">글쓰기</a>
         </div>
-
         <!-- 검색 form -->
         <form action="/board/search" method="GET">
             <div>

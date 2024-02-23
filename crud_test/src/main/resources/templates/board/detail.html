@@ -53,6 +53,7 @@
                 <button class="btn btn-warning" id="delete-btn">삭제</button>
             </form>
             <a th:href="@{'/board/list'}" class="btn btn-primary">돌아가기</a>
+            <a th:href="@{'/chat/enterRoom/' + ${boardDto.id}}" class="btn btn-success">채팅하기</a>
         </div>
         <br>
         <hr>
@@ -88,9 +89,6 @@
             /*]]>*/
         </script>
 
-        <!-- script -->
-        <script th:inline="javascript" th:src="@{/js/board.js}"></script>
-
     </div>
 </main>
 
@@ -103,10 +101,12 @@
         loading();
     });
 
+    // 날짜 포멧팅
     function formatNumber(num) {
         return num < 10 ? '0' + num : num; // 한 자릿수일 때 0을 추가
     }
 
+    // 대댓글 계층형 구조로 렌더링
     function renderComments(comments, container, depth = 0) {
         // 기존 댓글 목록을 지우고 새로운 댓글 목록을 추가
         container.empty();
@@ -187,6 +187,7 @@
         });
     }
 
+    // 댓글 json 데이터 load
     function loading(){
         console.log("로딩 시작...");
         $.ajax({
@@ -205,6 +206,7 @@
         })
     }
 
+    // 게시글 수정
     function edit(button) {
         console.log("editComment In!");
         const commentId = button.getAttribute('data-id');
@@ -228,6 +230,7 @@
         });
     }
 
+    // 대댓글 구현
     function reply(button){
         console.log("editComment In!");
         const commentId = button.getAttribute('data-id');
@@ -242,7 +245,6 @@
             data: {content: newContent},
             success: function (data) {
                 console.log(data);
-                // history.go();
                 loading();
             },
             error: function () {
