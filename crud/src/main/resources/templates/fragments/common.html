@@ -20,9 +20,9 @@
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item" th:classappend="${menu} == 'home'? 'active'">
-                <a class="nav-link" href="#" th:href="@{/board}">
+                <a class="nav-link" href="#" th:href="@{/board/mainPage}">
                     홈
-                    <span class="sr-only" th:if="${menu} == 'home'">(current)</span>
+                    <span class="sr-only" th:if="${menu} == 'mainPage'">(current)</span>
                 </a>
             </li>
             <li class="nav-item" th:classappend="${menu} == 'board'? 'active'">

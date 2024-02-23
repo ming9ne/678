@@ -6,9 +6,19 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- Assuming you want to use Bootstrap 4, update the link accordingly if you are using a different version -->
     <style>
-        .field-error {
-            color: red;
+        .button {
+            border: none; /* 버튼 테두리 없앰 */
+            background: none; /* 배경 없앰 */
+            padding: 0; /* 내부 여백 없앰 */
+            cursor: pointer;
+            display: inline-block;
         }
+
+        .button img {
+            width: 100%; /* 부모 요소의 너비에 맞게 이미지 크기 조정 */
+            height: auto; /* 가로 비율에 맞추어 세로 크기 자동 조정 */
+        }
+
     </style>
 
 
@@ -50,27 +60,30 @@
             </div>
         </div>
 
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="row">
-                    <div class="col">
-                        <button type="button">
-                            <img src="/img/kakao.png" alt="KaKao" onclick="location.href='/oauth2/authorization/kakao'" >
-                        </button>
-                    </div>
-                    <div class="col">
-                        <button type="button">
-                            <img src="/img/naver.png" alt="Naver" onclick="location.href='/oauth2/authorization/naver'" >
-                        </button>
-                    </div>
-                    <div class="col">
-                        <button type="button">
-                            <img src="/img/google.png" alt="Google" onclick="location.href='/oauth2/authorization/google'" >
-                        </button>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col">
+                            <button type="button" style="border: none;">
+                                <img src="https://ifh.cc/g/nnFRJL.png" alt="KaKao" onclick="location.href='/oauth2/authorization/kakao'">
+                            </button>
+                        </div>
+                        <div class="col">
+                            <button type="button" style="border: none;">
+                                <img src="https://ifh.cc/g/cGJSqD.png" alt="Naver" onclick="location.href='/oauth2/authorization/naver'">
+                            </button>
+                        </div>
+                        <div class="col">
+                            <button type="button" style="border: none;">
+                                <img src="https://ifh.cc/g/jKO6Lq.png" alt="Google" onclick="location.href='/oauth2/authorization/google'">
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </form>
 </div>
 
