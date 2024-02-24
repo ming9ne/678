@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <meta charset="UTF-8">
+
+  <title>채팅</title>
+  <style>
+    *{
+      margin:0;
+      padding:0;
+    }
+    .container{
+      width: 500px;
+      margin: 0 auto;
+      padding: 25px
+    }
+    .container h1{
+      text-align: left;
+      padding: 5px 5px 5px 15px;
+      color: black;
+      border-left: 3px white;
+      margin-bottom: 20px;
+    }
+    .chating{
+      background-color: black;
+      width: 500px;
+      height: 500px;
+      overflow: auto;
+    }
+    .chating p{
+      color: white;
+      text-align: left;
+    }
+    input{
+      width: 330px;
+      height: 25px;
+    }
+    #yourMsg{
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="container" class="container">
+    <h1>채팅</h1>
+    <div id="chating" class="chating"></div>
+
+    <div id="yourMsg">
+      <table class="inputTable">
+        <tr>
+          <th>메시지</th>
+          <th><input id="chatting" placeholder="보내실 메시지를 입력하세요."></th>
+          <th><button onclick="send()" id="sendBtn">보내기</button></th>
+        </tr>
+        <tr>
+          <button onclick="quitRoom()" id="quitBtn">방 나가기</button>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <script th:inline="javascript">
+    /*<![CDATA[*/
+    let room = /*[[${room}]]*/ "";
+    let sender = /*[[${sender}]]*/ "";
+    /*]]>*/
+
+    let ws;
+    let msg;
+
+    $( document ).ready(function() {
+      console.log("$( document ).ready...");
+      wsOpen();
+      $("#yourMsg").show();
+    });
+
+    function wsOpen(){
+      ws = new WebSocket("ws://" + location.host + "/chat");
+      console.log("채팅 서버 시작");
+      wsEvt();
+    }
+
+    function wsEvt() {
+      ws.onopen = function(data){
+        //소켓이 열리면 초기화 세팅하기
+        enterRoom();
+      }
+
+      ws.onmessage = function(data) {
+        const msg = data.data;
+        const jsonMsg = JSON.parse(msg);
+        console.log(jsonMsg);
+
+        let htmlMsg =$('<p></p>')
+                .html(jsonMsg.sender + ' :' + '<br>' + '↪' + jsonMsg.message);
+        if(sender == jsonMsg.sender) {
+          htmlMsg.css({
+            'border': '2px solid yellow', /* 테두리 스타일과 색상 */
+            'border-radius': '5px', /* 테두리의 모서리를 둥글게 만듦 */
+            'margin-top': '10px',
+            'text-align': 'right'
+          });
+        }else{
+          htmlMsg.css({
+            'border': '2px solid #ccc', /* 테두리 스타일과 색상 */
+            'border-radius': '5px', /* 테두리의 모서리를 둥글게 만듦 */
+            'margin-top': '10px'
+          });
+        }
+
+        if(msg != null && msg.trim() != ''){
+          $("#chating").append(htmlMsg);
+        }
+      }
+    }
+
+    document.addEventListener("keypress", function (e){
+      if(e.keyCode == 13){
+        send();
+      }
+    });
+
+    function send() {
+      console.log("send()");
+      const message = $("#chatting").val();
+
+      msg={"type" : "TALK","roomId":room.roomId,"sender":sender,"message":message}; //sender는  글쓸때 수정하자.
+      ws.send(JSON.stringify(msg));
+      $('#chatting').val("");
+    }
+
+    function enterRoom(){
+      msg={"type" : "ENTER","roomId":room.roomId,"sender":sender,"message":""};
+      ws.send(JSON.stringify(msg));
+    }
+
+    function quitRoom(){
+      msg={"type" : "QUIT","roomId":room.roomId ,"sender":sender,"message":""};
+      ws.send(JSON.stringify(msg));
+      ws.close();
+      history.back();
+    }
+
+  </script>
+
+</body>
+</html>

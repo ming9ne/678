@@ -4,10 +4,10 @@ import lombok.Getter;
 
 @Getter
 public class Chatting {
-        private String value;
+    private String value;
 
-        public Chatting(String value){
-            this.value = value;
-        }
+    public Chatting(String value){
+        this.value = value;
+    }
 
 }

@@ -1,4 +1,4 @@
-package com.sw678.crud.model.entity.social;
+package com.sw678.crud.model.entity.socialuser;
 
 public interface Oauth2UserInterface {
     String getProviderId();
