@@ -2,23 +2,18 @@ package com.sw678.crud.service;
 
 import com.sw678.crud.model.dto.SigninDto;
 import com.sw678.crud.model.dto.SignupDto;
-import com.sw678.crud.model.dto.UserDto;
 import com.sw678.crud.model.entity.User;
-import com.sw678.crud.model.entity.social.UserDetail;
+import com.sw678.crud.model.entity.socialuser.UserDetail;
 import com.sw678.crud.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
-public class UserService implements UserDetailsService {
+public class UserService {
     private final Logger log = LoggerFactory.getLogger(getClass());
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -43,17 +38,8 @@ public class UserService implements UserDetailsService {
             log.info("Not Exists User");
             return null;
         }
+        System.out.println(user);
         return (bCryptPasswordEncoder.matches(password, user.getPassword())) ? user : null;
     }
 
-
-    //
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username);
-        if(user!=null) {
-            return new UserDetail(user);
-        }
-        return null;
-    }
 }
