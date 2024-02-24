@@ -192,7 +192,10 @@
         console.log("로딩 시작...");
         $.ajax({
             type: "GET",
-            url: "http://localhost:8080/api/v1/comment-service/comments/" + boardDto.id,
+            //PTH 집 PC
+            url: "http://192.168.200.105:8080/api/v1/comment-service/comments/" + boardDto.id,
+            // 로컬
+            // url: "http://localhost:8080/api/v1/comment-service/comments/" + boardDto.id,
             dataType:"json",
             success: function (data) {
                 console.log("댓글 리스트 load 성공...");
@@ -217,7 +220,10 @@
 
         $.ajax({
             type: "POST",
-            url: "http://localhost:8080/comment/" + commentId + "/" + boardDto.id + "/update",
+            //PTH 집 PC
+            url: "http://192.168.200.105:8080/comment/" + commentId + "/" + boardDto.id + "/update",
+            // 로컬
+            // url: "http://localhost:8080/comment/" + commentId + "/" + boardDto.id + "/update",
             data: {content: newContent},
             success: function (data) {
                 console.log(data);
@@ -241,7 +247,10 @@
         console.log(newContent)
         $.ajax({
             type: "POST",
-            url: "http://localhost:8080/comment/" + commentId + "/" + boardDto.id + "/reply",
+            // PTH 집 PC
+            url: "http://192.168.200.105:8080/comment/" + commentId + "/" + boardDto.id + "/reply",
+            // 로컬
+            // url: "http://localhost:8080/comment/" + commentId + "/" + boardDto.id + "/reply",
             data: {content: newContent},
             success: function (data) {
                 console.log(data);

@@ -49,6 +49,13 @@
                 <a class="nav-link" th:href="@{/login}">로그인</a>
                 <a class="nav-link" th:href="@{/signup}">회원가입</a>
             </li>
+            <li class="nav-item" th:classappend="${menu} == 'myPage'? 'active'">
+                <a class="nav-link" href="#" th:href="@{/myPage}">
+                    마이페이지
+                    <span class="sr-only" th:if="${menu} == 'myPage'">(current)</span>
+                </a>
+            </li>
+
             <li class="nav-item" sec:authorize="isAuthenticated()">
                 <button><span sec:authentication="name"></span>님 환영합니다!</button>
             </li>
@@ -56,12 +63,6 @@
                 <form method="post" action="/logout">
                     <button type="submit">로그아웃</button>
                 </form>
-            </li>
-            <li class="nav-item" th:classappend="${menu} == 'myPage'? 'active'">
-                <a class="nav-link" href="#" th:href="@{/myPage}">
-                    마이페이지
-                    <span class="sr-only" th:if="${menu} == 'myPage'">(current)</span>
-                </a>
             </li>
         </ul>
     </div>
