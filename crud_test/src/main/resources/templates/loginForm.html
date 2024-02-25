@@ -35,6 +35,9 @@
             <input type="password" id="password" th:field="*{password}" class="form-control" th:errorclass="field-error" required="required">
             <div class="field-error" th:errors="*{password}" />
         </div>
+        <div th:if="${param.error}">
+            <p style="color:red;">로그인에 실패했습니다: <span th:text="${param.exception}"></span></p>
+        </div>
         <div class="row-justify-content-center">
             <div class="col-md-6"> <!-- Adjust the width by changing the column size -->
                 <button type="submit" class="btn btn-primary btn-lg btn-block">로그인</button>

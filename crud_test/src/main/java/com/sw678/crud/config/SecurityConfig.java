@@ -1,6 +1,9 @@
 package com.sw678.crud.config;
 
+import com.sw678.crud.handler.LoginFailHandler;
+import com.sw678.crud.handler.LoginSuccessHandler;
 import com.sw678.crud.service.oauth.PrincipleOauth2UserService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,19 +15,12 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 
 @Configuration
+@RequiredArgsConstructor
 @EnableWebSecurity
 public class SecurityConfig  {
-    private PrincipleOauth2UserService principleOauth2UserService;
-
-    @Autowired
-    public SecurityConfig(PrincipleOauth2UserService principleOauth2UserService) {
-        this.principleOauth2UserService = principleOauth2UserService;
-    }
-
-//    @Bean
-//    public AuthenticationManager authenticationManager(AuthenticationConfiguration auth) throws Exception {
-//        return auth.getAuthenticationManager();
-//    }
+    private final PrincipleOauth2UserService principleOauth2UserService;
+    private final LoginFailHandler loginFailHandler;
+    private final LoginSuccessHandler loginSuccessHandler;
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -32,9 +28,6 @@ public class SecurityConfig  {
         http.
                 csrf(AbstractHttpConfigurer::disable)       //다른 도메인에서 API 호출을 안 막음. Rest Api -> 브라우저 통해 request 받아서 꺼도 됨.
                 .cors(AbstractHttpConfigurer::disable);
-//                .sessionManagement(s->s.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
-
-
         http.
                 authorizeHttpRequests( auth -> auth
                         .requestMatchers("/user").authenticated()
@@ -46,7 +39,8 @@ public class SecurityConfig  {
                 .formLogin(formLogin -> formLogin
                         .loginPage("/loginForm")
                         .loginProcessingUrl("/login")
-                        .defaultSuccessUrl("/board/list")
+                        .successHandler(loginSuccessHandler)
+                        .failureHandler(loginFailHandler)
                         .usernameParameter("username")
                         .passwordParameter("password")
                         .permitAll()
@@ -55,8 +49,8 @@ public class SecurityConfig  {
         http
                 .oauth2Login(oauth -> oauth
                         .loginPage("/loginForm")
-                        .defaultSuccessUrl("/board/list")
-                        .failureUrl("/login?error=true")
+                        .successHandler(loginSuccessHandler)
+                        .failureHandler(loginFailHandler)
                         .userInfoEndpoint(userInfo -> userInfo
                                 .userService(principleOauth2UserService))
                 );

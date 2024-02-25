@@ -43,7 +43,8 @@ public class BoardController {
 
     // write
     @GetMapping("/post")
-    public String write(){
+    public String write(Model model, @AuthenticationPrincipal UserDetail user){
+        model.addAttribute("user", user.getUser().getNickname());
         return "board/write";
     }
 

@@ -1,22 +1,23 @@
 package com.sw678.crud.controller;
 
+import com.sw678.crud.handler.LoginFailHandler;
 import com.sw678.crud.model.dto.SigninDto;
 import com.sw678.crud.model.dto.SignupDto;
 import com.sw678.crud.model.entity.User;
 import com.sw678.crud.model.entity.socialuser.UserDetail;
 import com.sw678.crud.service.UserService;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
+import java.net.http.HttpRequest;
 import java.util.Random;
 
 @Controller
@@ -33,33 +34,17 @@ public class UserController {
     }
 
     @GetMapping("/login")
-    public String signinForm(Model model){
+    public String LoginForm(Model model){
         model.addAttribute("signinDto", new SignupDto());
-
         return "loginForm";
     }
 
-    @PostMapping("/login")
-    public String loginForm(@Valid SigninDto signinDto, BindingResult bindingResult){
-
-        // 검증 실패시
-        if(bindingResult.hasErrors()){
-            return "loginForm";
-        }
-
-        // 로그인 시도
-        User loginUser = userService.login(signinDto);
-        System.out.println(loginUser);
-
-        if(loginUser == null){
-            bindingResult.reject("loginFail", "아이디나 비밀번호가 일치하지 않습니다.");
-            return "loginForm";
-        }
-
-        System.out.println("로그인 성공입니다.");
-        // 로그인 성공 처리시
+    @GetMapping("loginSuccess")
+    public String LoginSuccess(HttpServletRequest request, Model model){
+        model.addAttribute("user", request.getAttribute("user"));
         return "redirect:/board/list";
     }
+
 
     // 회원가입
     @GetMapping("/signup")
