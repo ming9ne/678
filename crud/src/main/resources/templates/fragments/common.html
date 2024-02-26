@@ -12,7 +12,7 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" th:fragment="menu(menu)">
-    <a class="navbar-brand" href="#">산책 합시다</a>
+    <a class="navbar-brand" th:href="@{/board/mainPage}">산책 합시다</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -25,8 +25,20 @@
                     <span class="sr-only" th:if="${menu} == 'mainPage'">(current)</span>
                 </a>
             </li>
+
+
+<!--            <li class="nav-item" th:classappend="${menu} == 'board'? 'active'">-->
+<!--                <a class="nav-link" href="#" th:href="@{/board/list}">-->
+<!--                    게시판-->
+<!--                    <span class="sr-only" th:if="${menu} == 'board'">(current)</span>-->
+<!--                </a>-->
+<!--            </li>-->
             <li class="nav-item" th:classappend="${menu} == 'board'? 'active'">
-                <a class="nav-link" href="#" th:href="@{/board/list}">
+                <a class="nav-link" href="#" th:if="${#authentication.principal != null}" th:href="@{/board/list}">
+                    게시판
+                    <span class="sr-only" th:if="${menu} == 'board'">(current)</span>
+                </a>
+                <a class="nav-link" href="#" th:unless="${#authentication.principal != null}" th:href="@{/login}">
                     게시판
                     <span class="sr-only" th:if="${menu} == 'board'">(current)</span>
                 </a>
@@ -37,12 +49,27 @@
                     <span class="sr-only" th:if="${menu} == 'map'">(current)</span>
                 </a>
             </li>
-            <li class="nav-item" th:classappend="${menu} == 'board'? 'active'">
-                <a class="nav-link" href="#" th:href="@{/chat}">
-                    채팅
-                    <span class="sr-only" th:if="${menu} == 'board'">(current)</span>
+<!--            Github-->
+            <li class="nav-item" th:classappend="${menu} == 'map'? 'active'">
+                <a class="nav-link" href="https://github.com/ming9ne/678" target="_blank">
+                    GitHub
+                    <span class="sr-only" th:if="${menu} == 'GitHub'">(current)</span>
                 </a>
             </li>
+
+            <!--            Notion-->
+            <li class="nav-item" th:classappend="${menu} == 'map'? 'active'">
+                <a class="nav-link" href="https://www.notion.so/678-a00e001a30254db1b99d082ae94a67dc?pvs=4" target="_blank">
+                    Notion
+                    <span class="sr-only" th:if="${menu} == 'Notion'">(current)</span>
+                </a>
+            </li>
+<!--            <li class="nav-item" th:classappend="${menu} == 'board'? 'active'">-->
+<!--                <a class="nav-link" href="#" th:href="@{/chat}">-->
+<!--                    채팅-->
+<!--                    <span class="sr-only" th:if="${menu} == 'board'">(current)</span>-->
+<!--                </a>-->
+<!--            </li>-->
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item" sec:authorize="isAnonymous()">

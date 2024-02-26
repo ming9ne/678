@@ -100,9 +100,9 @@
         /* Fading animation */
         .fade {
             -webkit-animation-name: fade;
-            -webkit-animation-duration: 8s;
+            -webkit-animation-duration: 10s;
             animation-name: fade;
-            animation-duration: 8s;
+            animation-duration: 10s;
         }
 
         @-webkit-keyframes fade {
@@ -119,6 +119,11 @@
         .slideshow-container img {
             margin-top: 50px; /* Adjusted margin-top value */
         }
+
+        .mySlides {
+            margin-top: 150px;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -132,58 +137,61 @@
     <!-- Info-->
     <div class="mySlides fade" onclick="location.href='/board/mainPage'">
         <div class="numbertext">1 / 8</div>
-        <img src="https://ifh.cc/g/zOS2qk.jpg" style="width:100%">
+        <img src="https://ifh.cc/g/vSZD3c.jpg" style="max-width: 100%; height: auto;">
         <div class="text">Caption Text</div>
     </div>
 
-    <!-- signup-->
-<!--    <div class="mySlides fade">-->
-<!--        <div class="numbertext">2 / 8</div>-->
-<!--        <img src="https://ifh.cc/g/LG9hz7.png" style="width:100%">-->
-<!--        <div class="text">Caption Text</div>-->
-<!--    </div>-->
-    <div class="mySlides fade" onclick="location.href='/signup'">
+    <!-- 박태현 -->
+    <div class="mySlides fade" onclick="window.location.href='https://github.com/ming9ne'">
         <div class="numbertext">2 / 8</div>
-        <img src="https://ifh.cc/g/LG9hz7.png" style="width:100%">
+        <img src="https://ifh.cc/g/8zzNL8.jpg" style="max-width: 100%; height: auto;">
         <div class="text">Caption Text</div>
     </div>
 
-    <!-- login-->
-    <div class="mySlides fade" onclick="location.href='/login'">
+    <!-- 조상준 -->
+    <div class="mySlides fade" onclick="window.location.href='https://github.com/tns250cpp'">
         <div class="numbertext">3 / 8</div>
-        <img src="https://ifh.cc/g/19bd9K.png" style="width:100%">
+        <img src="https://ifh.cc/g/01WOmB.png" style="max-width: 100%; height: auto;">
         <div class="text">Caption Two</div>
     </div>
-    <!-- board-->
-    <div class="mySlides fade" onclick="location.href='/board/list'">
+
+    <!-- 이승철 -->
+    <div class="mySlides fade" onclick="window.location.href='https://github.com/Seungchull'">
         <div class="numbertext">4 / 8</div>
-        <img src="https://ifh.cc/g/63jS61.jpg" style="width:100%">
+        <img src="https://ifh.cc/g/NJrClv.png" style="max-width: 100%; height: auto;">
         <div class="text">Caption Three</div>
     </div>
-    <!-- map-->
-    <div class="mySlides fade" onclick="location.href='/board/map'">
-        <div class="numbertext">5 / 8</div>
-        <img src="https://ifh.cc/g/1CmDZ8.jpg" style="width:100%">
-        <div class="text">Caption Four</div>
+
+    <!-- 이승철 -->
+    <div class="mySlides fade" onclick="window.location.href='https://github.com/Seungchull'">
+        <div class="numbertext">4 / 8</div>
+        <img src="https://ifh.cc/g/NJrClv.png" style="max-width: 100%; height: auto;">
+        <div class="text">Caption Three</div>
     </div>
-    <!-- parkinfo-->
-    <div class="mySlides fade" onclick="location.href='/board/map'">
-        <div class="numbertext">6 / 7</div>
-        <img src="https://ifh.cc/g/wq01of.jpg" style="width:100%">
-        <div class="text">Caption Five</div>
-    </div>
-    <!-- pminfo-->
-    <div class="mySlides fade" onclick="location.href='/board/map'">
-        <div class="numbertext">7 / 8</div>
-        <img src="https://ifh.cc/g/aBRPsF.jpg" style="width:100%">
-        <div class="text">Caption Six</div>
-    </div>
-    <!-- chat-->
-    <div class="mySlides fade" onclick="location.href='/chat'">>
-        <div class="numbertext">8 / 8</div>
-        <img src="https://ifh.cc/g/GQRqKF.png" style="width:100%">
-        <div class="text">Caption Seven</div>
-    </div>
+<!--    &lt;!&ndash; map&ndash;&gt;-->
+<!--    <div class="mySlides fade" onclick="location.href='/board/map'">-->
+<!--        <div class="numbertext">5 / 8</div>-->
+<!--        <img src="https://ifh.cc/g/1CmDZ8.jpg" style="width:100%">-->
+<!--        <div class="text">Caption Four</div>-->
+<!--    </div>-->
+<!--    &lt;!&ndash; parkinfo&ndash;&gt;-->
+<!--    <div class="mySlides fade" onclick="location.href='/board/map'">-->
+<!--        <div class="numbertext">6 / 7</div>-->
+<!--        <img src="https://ifh.cc/g/wq01of.jpg" style="width:100%">-->
+<!--        <div class="text">Caption Five</div>-->
+<!--    </div>-->
+<!--    &lt;!&ndash; pminfo&ndash;&gt;-->
+<!--    <div class="mySlides fade" onclick="location.href='/board/map'">-->
+<!--        <div class="numbertext">7 / 8</div>-->
+<!--        <img src="https://ifh.cc/g/aBRPsF.jpg" style="width:100%">-->
+<!--        <div class="text">Caption Six</div>-->
+<!--    </div>-->
+<!--    &lt;!&ndash; chat&ndash;&gt;-->
+<!--    <div class="mySlides fade" onclick="location.href='/chat'">>-->
+<!--        <div class="numbertext">8 / 8</div>-->
+<!--        <img src="https://ifh.cc/g/GQRqKF.png" style="width:100%">-->
+<!--        <div class="text">Caption Seven</div>-->
+<!--    </div>-->
 
     <!-- Next and previous buttons -->
     <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
@@ -196,10 +204,10 @@
     <span class="dot" onclick="currentSlide(2)"></span>
     <span class="dot" onclick="currentSlide(3)"></span>
     <span class="dot" onclick="currentSlide(4)"></span>
-    <span class="dot" onclick="currentSlide(5)"></span>
-    <span class="dot" onclick="currentSlide(6)"></span>
-    <span class="dot" onclick="currentSlide(7)"></span>
-    <span class="dot" onclick="currentSlide(8)"></span>
+<!--    <span class="dot" onclick="currentSlide(5)"></span>-->
+<!--    <span class="dot" onclick="currentSlide(6)"></span>-->
+<!--    <span class="dot" onclick="currentSlide(7)"></span>-->
+<!--    <span class="dot" onclick="currentSlide(8)"></span>-->
 </div>
 <script>
     var slideIndex = 1;
@@ -221,7 +229,7 @@
     function startAutoSlide() {
         slideInterval = setInterval(function() {
             plusSlides(1);
-        }, 8000);
+        }, 10000);
     }
 
     function showSlides(n) {

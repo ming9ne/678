@@ -15,6 +15,9 @@
       <module name="678.gateway-service" target="17" />
       <module name="678.gateway-service.main" target="17" />
       <module name="678.gateway-service.test" target="17" />
+      <module name="board" target="17" />
+      <module name="board.main" target="17" />
+      <module name="board.test" target="17" />
       <module name="gateway-service_main" target="17" />
       <module name="gateway-service_test" target="17" />
     </bytecodeTargetLevel>

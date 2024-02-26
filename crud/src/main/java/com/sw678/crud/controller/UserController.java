@@ -9,6 +9,8 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -39,6 +41,21 @@ public class UserController {
         return "loginForm";
     }
 
+    // UserController.java
+
+
+    @GetMapping("/myPage")
+    public String myPage(Model model) {
+        SignupDto userDetail = userService.getCurrentUserDetails();
+
+        // 모델에 사용자 정보 추가
+        model.addAttribute("userDetail", userDetail);
+
+        return "myPage";
+    }
+
+
+
     @PostMapping("/login")
     public String loginForm(@Valid SigninDto signinDto, BindingResult bindingResult){
 
@@ -58,7 +75,7 @@ public class UserController {
 
         System.out.println("로그인 성공입니다.");
         // 로그인 성공 처리시
-        return "redirect:/board/list";
+        return "redirect:/board/mainPage";
     }
 
     // 회원가입
