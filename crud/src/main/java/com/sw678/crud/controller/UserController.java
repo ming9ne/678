@@ -75,7 +75,7 @@ public class UserController {
 
         System.out.println("로그인 성공입니다.");
         // 로그인 성공 처리시
-        return "redirect:/board/list";
+        return "redirect:/board/mainPage";
     }
 
     // 회원가입

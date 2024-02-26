@@ -1,6 +1,7 @@
 package com.sw678.crud.controller;
 
 import com.sw678.crud.model.dto.ChatRoom;
+import com.sw678.crud.model.entity.Chatting;
 import com.sw678.crud.model.entity.socialuser.UserDetail;
 import com.sw678.crud.service.ChatService;
 import lombok.RequiredArgsConstructor;
@@ -10,13 +11,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/chat")
 @RequiredArgsConstructor
 public class ChatController {
 
     private final ChatService chatService;
 
-    @GetMapping("/enterRoom/{roomId}")
+    @GetMapping("/chat/enterRoom/{roomId}")
     public String chatRoom(@PathVariable("roomId")Long roomId, Model model, @AuthenticationPrincipal UserDetail user){
         ChatRoom room = chatService.findRoomById(roomId);
         if(room == null)
@@ -27,4 +27,14 @@ public class ChatController {
 //        return "chat/view";
         return "chat/view";
     }
+// 구 채팅
+//    @GetMapping("/chat")
+//    public String chatting(Model model){
+//
+//        Chatting chatting = new Chatting("Hello, Chat!");
+//
+//        model.addAttribute("chatting", chatting);
+//
+//        return "chat/chatView";
+//    }
 }
