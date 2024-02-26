@@ -26,6 +26,7 @@ ext {
 }
 
 dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
@@ -45,14 +46,59 @@ dependencies {
     implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-websocket'
+
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-mail'
+
 
     implementation 'io.github.resilience4j:resilience4j-spring-boot2:2.1.0'
     implementation 'io.github.resilience4j:resilience4j-circuitbreaker:2.0.2'
     implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
     implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
     implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+
+
+    // 상준 추가
+
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
+//    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.16.1'
+
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.15.2'
+
 }
+
+//dependencies {
+//    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+//    implementation 'org.springframework.boot:spring-boot-starter-web'
+//    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+//    implementation 'org.springframework.boot:spring-boot-starter-logging'
+//    implementation 'org.springframework.boot:spring-boot-starter-security'
+//    compileOnly 'org.projectlombok:lombok'
+//    runtimeOnly 'com.mysql:mysql-connector-j'
+//    annotationProcessor 'org.projectlombok:lombok:1.18.28'
+//    implementation 'org.projectlombok:lombok:1.18.22'
+//    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+//    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+//    implementation 'org.springframework.cloud:spring-cloud-starter-config'
+//    implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap'
+//    implementation 'org.glassfish.jaxb:jaxb-runtime:3.0.1'
+//    implementation 'com.h2database:h2'
+//    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+//    implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
+//    implementation 'org.springframework.boot:spring-boot-starter-validation'
+//    implementation 'org.springframework.boot:spring-boot-starter-websocket'
+//    implementation 'io.github.resilience4j:resilience4j-spring-boot2:2.1.0'
+//    implementation 'io.github.resilience4j:resilience4j-circuitbreaker:2.0.2'
+//    implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
+//    implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
+//    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+//    implementation 'org.springframework.boot:spring-boot-starter-mail'
+//
+//    // 추가된 부분
+//    implementation 'org.springframework.boot:spring-boot-starter'
+//    implementation 'org.springframework.boot:spring-boot-starter-security'
+//    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.16.1'
+//}
 
 dependencyManagement {
     imports {

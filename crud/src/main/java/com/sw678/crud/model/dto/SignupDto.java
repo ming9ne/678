@@ -37,4 +37,5 @@ public class SignupDto {
                 .createDate(LocalDateTime.now())
                 .build();
     }
+
 }

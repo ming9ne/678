@@ -42,10 +42,19 @@
 <body>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" th:replace="fragments/common :: menu('home')"></nav>
 
-<main role="main" class="container">
+<h1>마이페이지</h1>
+
+<!-- myPage.html -->
+
+<div th:if="${userDetail != null}">
+    <p><strong>Username:</strong> <span th:text="${userDetail.username}"></span></p>
+    <p><strong>Nickname:</strong> <span th:text="${userDetail.nickname}"></span></p>
+    <p><strong>Email:</strong> <span th:text="${userDetail.email}"></span></p>
+    <p><strong>Role:</strong> <span th:text="${userDetail.role}"></span></p>
+    <p><strong>Create Date:</strong> <span th:text="${userDetail.createDate}"></span></p>
+</div>
 
 
-</main>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
