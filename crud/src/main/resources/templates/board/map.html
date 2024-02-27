@@ -323,9 +323,9 @@
         try {
             const response = await fetch(
                 // PTH 집 PC
-                "http://192.168.200.105:8100/api/v1/park-service/load"
+                // "http://192.168.200.105:8100/api/v1/park-service/load"
                 // PTH 노트북
-                // "http://192.168.219.110:8100/api/v1/park-service/load"
+                "http://192.168.219.110:8100/api/v1/park-service/load"
             );
             if (response.ok) {
                 const data = await response.json();
@@ -400,9 +400,9 @@
     const fetchPollutionData = async () => {
         try {
             // PTH 집 PC
-            const response = await fetch("http://192.168.200.105:8100/api/v1/pollution-service/load");
+            // const response = await fetch("http://192.168.200.105:8100/api/v1/pollution-service/load");
             // PTH 노트북
-            // const response = await fetch("http://192.168.219.110:8100/api/v1/pollution-service/load");
+            const response = await fetch("http://192.168.219.110:8100/api/v1/pollution-service/load");
             if (response.ok) {
                 const data = await response.json();
 

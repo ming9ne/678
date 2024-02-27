@@ -26,21 +26,10 @@
                 </a>
             </li>
 
-
-<!--            <li class="nav-item" th:classappend="${menu} == 'board'? 'active'">-->
-<!--                <a class="nav-link" href="#" th:href="@{/board/list}">-->
-<!--                    게시판-->
-<!--                    <span class="sr-only" th:if="${menu} == 'board'">(current)</span>-->
-<!--                </a>-->
-<!--            </li>-->
-            <li class="nav-item" th:classappend="${menu} == 'board'? 'active'">
-                <a class="nav-link" href="#" th:if="${#authentication.principal != null}" th:href="@{/board/list}">
+            <li class="nav-item" th:classappend="${menu} == 'home'? 'active'">
+                <a class="nav-link" href="#" th:href="@{/board/list}">
                     게시판
-                    <span class="sr-only" th:if="${menu} == 'board'">(current)</span>
-                </a>
-                <a class="nav-link" href="#" th:unless="${#authentication.principal != null}" th:href="@{/login}">
-                    게시판
-                    <span class="sr-only" th:if="${menu} == 'board'">(current)</span>
+                    <span class="sr-only" th:if="${menu} == 'home'">(current)</span>
                 </a>
             </li>
             <li class="nav-item" th:classappend="${menu} == 'map'? 'active'">
@@ -84,7 +73,7 @@
             </li>
 
             <li class="nav-item" sec:authorize="isAuthenticated()">
-                <button><span sec:authentication="name"></span>님 환영합니다!</button>
+                <button><span th:text="${user}"></span>님 환영합니다!</button>
             </li>
             <li class="nav-item" sec:authorize="isAuthenticated()">
                 <form method="post" action="/logout">

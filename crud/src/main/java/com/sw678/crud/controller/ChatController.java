@@ -27,14 +27,14 @@ public class ChatController {
 //        return "chat/view";
         return "chat/view";
     }
-// 구 채팅
-//    @GetMapping("/chat")
+
+//    @GetMapping("/Guchat")
 //    public String chatting(Model model){
 //
 //        Chatting chatting = new Chatting("Hello, Chat!");
 //
 //        model.addAttribute("chatting", chatting);
 //
-//        return "chat/chatView";
+//        return "chatView";
 //    }
 }
