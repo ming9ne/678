@@ -1,4 +1,4 @@
-<img src="https://capsule-render.vercel.app/api?type=waving&height=300&color=gradient&text=678%20Project&fontAlign=100&fontAlignY=50&fontSize=90" />
+<img src="https://capsule-render.vercel.app/api?type=waving&height=300&color=gradient&text=678%20Project&fontAlign=50&fontAlignY=50&descAlign=100&fontSize=90" />
 
 [노션](https://www.notion.so/678-a00e001a30254db1b99d082ae94a67dc)
 
