@@ -20,10 +20,10 @@
 <div align="center">
   <h4>DB</h4>
   <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white">&nbsp
-  <img src="https://img.shields.io/badge/spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white">&nbsp
+  <img src="https://img.shields.io/badge/Spring JPA-6DB33F?style=for-the-badge&logo=spring&logoColor=white">&nbsp
 </div>
 <div align="center">
   <h4>Server</h4>
-  <img src="https://img.shields.io/badge/apache tomcat-F8DC75?style=for-the-badge&logo=apachetomcat&logoColor=white">&nbsp
-  <img src="https://img.shields.io/badge/spring cloud gateway-6DB33F?&style=for-the-badge&logo=spring cloud gateway&logoColor=white"/>&nbsp
+  <img src="https://img.shields.io/badge/Apache tomcat-F8DC75?style=for-the-badge&logo=apachetomcat&logoColor=white">&nbsp
+  <img src="https://img.shields.io/badge/Spring Cloud Gateway-6DB33F?&style=for-the-badge&logo=spring cloud gateway&logoColor=white"/>&nbsp
 </div>
