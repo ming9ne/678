@@ -18,6 +18,9 @@
             width: 100%; /* 부모 요소의 너비에 맞게 이미지 크기 조정 */
             height: auto; /* 가로 비율에 맞추어 세로 크기 자동 조정 */
         }
+        .field-error {
+            color: red;
+        }
 
     </style>
 
@@ -44,6 +47,14 @@
             <label for="password">비밀번호</label>
             <input type="password" id="password" th:field="*{password}" class="form-control" th:errorclass="field-error" required="required">
             <div class="field-error" th:errors="*{password}" />
+        </div>
+        <div th:if="${param.error}">
+            <p style="color:red;">로그인에 실패했습니다: <span th:text="${param.exception}"></span></p>
+            <script>
+                // JavaScript 코드를 사용하여 alert 창을 띄웁니다.
+                const msg = "로그인에 실패했습니다: \n" + "[[${param.exception}]]";
+                alert(msg);
+            </script>
         </div>
         <div class="row justify-content-center mb-4">
             <div class="col-md-6"> <!-- Adjust the width by changing the column size -->
