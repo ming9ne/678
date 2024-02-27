@@ -1,4 +1,5 @@
 # 678Project
+[노션](https://www.notion.so/678-a00e001a30254db1b99d082ae94a67dc)
 
 # 노션에서 GitHub README로 이쁘게 옮기기
 
