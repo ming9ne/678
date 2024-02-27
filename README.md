@@ -1,3 +1,5 @@
+<img src="https://capsule-render.vercel.app/api?type=waving&height=300&color=gradient&text=678%20Project&fontSize=90" />
+
 # 678Project
 [노션](https://www.notion.so/678-a00e001a30254db1b99d082ae94a67dc)
 
