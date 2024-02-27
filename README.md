@@ -64,4 +64,6 @@
 - 서비스 진행되는 간단한 이미지?(이 문구는 나중에 지우기)
 
 <!--푸터-->
+<!--
 <img src="https://capsule-render.vercel.app/api?type=waving&height=200&color=gradient&text=&fontAlign=50&fontAlignY=50&descAlign=100&textBg=false&fontColor=black&animation=twinkling&fontSize=90" />
+-->
