@@ -11,7 +11,6 @@
         }
     </style>
 
-
 </head>
 
 <body>
@@ -37,6 +36,11 @@
         </div>
         <div th:if="${param.error}">
             <p style="color:red;">로그인에 실패했습니다: <span th:text="${param.exception}"></span></p>
+            <script>
+                // JavaScript 코드를 사용하여 alert 창을 띄웁니다.
+                const msg = "로그인에 실패했습니다: \n" + "[[${param.exception}]]";
+                alert(msg);
+            </script>
         </div>
         <div class="row-justify-content-center">
             <div class="col-md-6"> <!-- Adjust the width by changing the column size -->

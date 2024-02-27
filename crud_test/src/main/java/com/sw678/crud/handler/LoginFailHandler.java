@@ -18,6 +18,7 @@ import java.net.URLEncoder;
 public class LoginFailHandler extends SimpleUrlAuthenticationFailureHandler{
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
+        System.out.println("로그인 실패");
         String errorMessage;
         if (exception instanceof BadCredentialsException || exception instanceof InternalAuthenticationServiceException) {
             errorMessage = "아이디 또는 비밀번호가 맞지 않습니다. 다시 확인해 주세요.";
