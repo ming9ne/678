@@ -1,4 +1,4 @@
-<img src="https://capsule-render.vercel.app/api?type=waving&height=300&color=gradient&text=678%20Project&fontAlign=50&fontAlignY=50&descAlign=100&fontSize=90" />
+<img src="https://capsule-render.vercel.app/api?type=waving&height=300&color=gradient&text=678%20Project&fontAlign=50&fontAlignY=50&descAlign=100&textBg=false&fontColor=black&animation=twinkling&fontSize=90" />
 
 [노션](https://www.notion.so/678-a00e001a30254db1b99d082ae94a67dc)
 
@@ -51,3 +51,5 @@
   <img src="https://img.shields.io/badge/notion-000000?style=for-the-badge&logo=notion&logoColor=white">&nbsp
   <img src="https://img.shields.io/badge/github-181717?&style=for-the-badge&logo=github&logoColor=white"/>&nbsp
 </div>
+
+<img src="https://capsule-render.vercel.app/api?type=waving&height=200&color=gradient&text=&fontAlign=50&fontAlignY=50&descAlign=100&textBg=false&fontColor=black&animation=twinkling&fontSize=90" />
