@@ -7,14 +7,15 @@
 
 ## 목차
 - [프로젝트소개](#프로젝트소개)
-- [팀원](#팀원)
+- [팀원(역할분담)](#팀원(역할분담))
 - [개발환경](#개발환경)
 - [기술스택](#기술스택)
+- [기능(이미지)](#기능)
 <br>
 
 ## 프로젝트소개
 - 프로젝트 소개란 적기(이 문구는 나중에 지우기)
-## 팀원
+## 팀원(역할분담)
 - 추가할 내용 적기. (이 문구는 나중에 지우기)
 - 박태현
 - 조상준
@@ -25,7 +26,7 @@
 
 <!--기술 스택 뱃지 처리-->
 ## 기술스택
-- 기술스택은 조상준이 임의로 작성, 추가할 거 있으면 더 추가하기.(이 문구는 나중에 지우기) 
+- 기술스택은 조상준이 임의로 작성, 추가할 거 있으면 더 추가하기.(이 문구는 나중에 지우기)<br>
 [✨ Tech Stack ✨]
 <div align="center">
   <h4>Front</h4>
@@ -58,6 +59,9 @@
   <img src="https://img.shields.io/badge/notion-000000?style=for-the-badge&logo=notion&logoColor=white">&nbsp
   <img src="https://img.shields.io/badge/github-181717?&style=for-the-badge&logo=github&logoColor=white"/>&nbsp
 </div>
+
+## 기능
+- 서비스 진행되는 간단한 이미지?(이 문구는 나중에 지우기)
 
 <!--푸터-->
 <img src="https://capsule-render.vercel.app/api?type=waving&height=200&color=gradient&text=&fontAlign=50&fontAlignY=50&descAlign=100&textBg=false&fontColor=black&animation=twinkling&fontSize=90" />
