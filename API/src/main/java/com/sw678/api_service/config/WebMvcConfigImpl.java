@@ -18,9 +18,9 @@ public class WebMvcConfigImpl implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
 //                PTH 집 PC
-                .allowedOrigins("http://192.168.200.105:8080")
+//                .allowedOrigins("http://192.168.200.105:8080")
 //                PTH 노트북
-//                .allowedOrigins("http://192.168.219.110:8080")
+                .allowedOrigins("http://192.168.219.110:8080")
                 .allowedMethods("GET", "POST", "PUT", "DELETE")
                 .allowedHeaders("*")
                 .allowCredentials(true);
