@@ -23,12 +23,11 @@
                 alert("인증가능한 이메일을 입력해주세요.");
                 return;
             }
-
             $.ajax({
                 type: "GET",
                 // url: "http://192.168.200.105:8080/emailAuth",
-                // PTH 노트북
-                url: "http://192.168.219.110:8080/emailAuth",
+                //         // PTH 노트북
+                url: "http://192.168.219.110:8080/signup/emailAuth",
                 data: {email: email},
                 success: function (data) {
                     alert("인증번호가 발송되었습니다.");
@@ -40,6 +39,24 @@
                 }
             });
         }
+
+
+        //     $.ajax({
+        //         type: "GET",
+        //         // url: "http://192.168.200.105:8080/emailAuth",
+        //         // PTH 노트북
+        //         url: "http://192.168.219.110:8080/emailAuth",
+        //         data: {email: email},
+        //         success: function (data) {
+        //             alert("인증번호가 발송되었습니다.");
+        //             email_auth = data;
+        //             console.log('인증코드 : ' + data);
+        //         },
+        //         error: function (data) {
+        //             alert("메일 발송에 실패했습니다.");
+        //         }
+        //     });
+        // }
 
         function checkAuth(){
             const inputNum = $('#check_num').val();

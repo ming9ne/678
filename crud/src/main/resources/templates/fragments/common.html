@@ -1,5 +1,92 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">-->
+<!--<head th:fragment="head(title)">-->
+<!--    &lt;!&ndash; Required meta tags &ndash;&gt;-->
+<!--    <meta charset="utf-8" />-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>-->
+
+<!--    &lt;!&ndash; Bootstrap CSS &ndash;&gt;-->
+<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"/>-->
+<!--    <link href="starter-template.css" th:href="@{/css/starter-template.css}" rel="stylesheet"/>-->
+<!--    <title th:text="${title}">Shall We take a walk?</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" th:fragment="menu(menu)">-->
+<!--    <a class="navbar-brand" th:href="@{/board/mainPage}">산책 합시다</a>-->
+<!--    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--        <span class="navbar-toggler-icon"></span>-->
+<!--    </button>-->
+
+<!--    <div class="collapse navbar-collapse" id="navbarsExampleDefault">-->
+<!--        <ul class="navbar-nav mr-auto">-->
+<!--            <li class="nav-item" th:classappend="${menu} == 'home'? 'active'">-->
+<!--                <a class="nav-link" href="#" th:href="@{/board/mainPage}">-->
+<!--                    홈-->
+<!--                    <span class="sr-only" th:if="${menu} == 'mainPage'">(current)</span>-->
+<!--                </a>-->
+<!--            </li>-->
+
+<!--            <li class="nav-item" th:classappend="${menu} == 'home'? 'active'">-->
+<!--                <a class="nav-link" href="#" th:href="@{/board/list}">-->
+<!--                    게시판-->
+<!--                    <span class="sr-only" th:if="${menu} == 'home'">(current)</span>-->
+<!--                </a>-->
+<!--            </li>-->
+<!--            <li class="nav-item" th:classappend="${menu} == 'map'? 'active'">-->
+<!--                <a class="nav-link" href="#" th:href="@{/board/map}">-->
+<!--                    지도-->
+<!--                    <span class="sr-only" th:if="${menu} == 'map'">(current)</span>-->
+<!--                </a>-->
+<!--            </li>-->
+<!--&lt;!&ndash;            Github&ndash;&gt;-->
+<!--            <li class="nav-item" th:classappend="${menu} == 'map'? 'active'">-->
+<!--                <a class="nav-link" href="https://github.com/ming9ne/678" target="_blank">-->
+<!--                    GitHub-->
+<!--                    <span class="sr-only" th:if="${menu} == 'GitHub'">(current)</span>-->
+<!--                </a>-->
+<!--            </li>-->
+
+<!--            &lt;!&ndash;            Notion&ndash;&gt;-->
+<!--            <li class="nav-item" th:classappend="${menu} == 'map'? 'active'">-->
+<!--                <a class="nav-link" href="https://www.notion.so/678-a00e001a30254db1b99d082ae94a67dc?pvs=4" target="_blank">-->
+<!--                    Notion-->
+<!--                    <span class="sr-only" th:if="${menu} == 'Notion'">(current)</span>-->
+<!--                </a>-->
+<!--            </li>-->
+<!--&lt;!&ndash;            <li class="nav-item" th:classappend="${menu} == 'board'? 'active'">&ndash;&gt;-->
+<!--&lt;!&ndash;                <a class="nav-link" href="#" th:href="@{/chat}">&ndash;&gt;-->
+<!--&lt;!&ndash;                    채팅&ndash;&gt;-->
+<!--&lt;!&ndash;                    <span class="sr-only" th:if="${menu} == 'board'">(current)</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                </a>&ndash;&gt;-->
+<!--&lt;!&ndash;            </li>&ndash;&gt;-->
+<!--        </ul>-->
+<!--        <ul class="navbar-nav ml-auto">-->
+<!--            <li class="nav-item" sec:authorize="isAnonymous()">-->
+<!--                <a class="nav-link" th:href="@{/login}">로그인</a>-->
+<!--                <a class="nav-link" th:href="@{/signup}">회원가입</a>-->
+<!--            </li>-->
+<!--            <li class="nav-item" th:classappend="${menu} == 'myPage'? 'active'">-->
+<!--                <a class="nav-link" href="#" th:href="@{/myPage}">-->
+<!--                    마이페이지-->
+<!--                    <span class="sr-only" th:if="${menu} == 'myPage'">(current)</span>-->
+<!--                </a>-->
+<!--            </li>-->
+
+<!--            <li class="nav-item" sec:authorize="isAuthenticated()">-->
+<!--                <button><span th:text="${user}"></span>님 환영합니다!</button>-->
+<!--            </li>-->
+<!--            <li class="nav-item" sec:authorize="isAuthenticated()">-->
+<!--                <form method="post" action="/logout">-->
+<!--                    <button type="submit">로그아웃</button>-->
+<!--                </form>-->
+<!--            </li>-->
+<!--        </ul>-->
+<!--    </div>-->
+<!--</nav>-->
+<!--</body>-->
+<!--</html>-->
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:fragment="head(title)">
     <!-- Required meta tags -->
     <meta charset="utf-8" />
@@ -38,7 +125,7 @@
                     <span class="sr-only" th:if="${menu} == 'map'">(current)</span>
                 </a>
             </li>
-<!--            Github-->
+            <!--            Github-->
             <li class="nav-item" th:classappend="${menu} == 'map'? 'active'">
                 <a class="nav-link" href="https://github.com/ming9ne/678" target="_blank">
                     GitHub
@@ -53,12 +140,12 @@
                     <span class="sr-only" th:if="${menu} == 'Notion'">(current)</span>
                 </a>
             </li>
-<!--            <li class="nav-item" th:classappend="${menu} == 'board'? 'active'">-->
-<!--                <a class="nav-link" href="#" th:href="@{/chat}">-->
-<!--                    채팅-->
-<!--                    <span class="sr-only" th:if="${menu} == 'board'">(current)</span>-->
-<!--                </a>-->
-<!--            </li>-->
+            <!--            <li class="nav-item" th:classappend="${menu} == 'board'? 'active'">-->
+            <!--                <a class="nav-link" href="#" th:href="@{/chat}">-->
+            <!--                    채팅-->
+            <!--                    <span class="sr-only" th:if="${menu} == 'board'">(current)</span>-->
+            <!--                </a>-->
+            <!--            </li>-->
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item" sec:authorize="isAnonymous()">
@@ -73,13 +160,10 @@
             </li>
 
             <li class="nav-item" sec:authorize="isAuthenticated()">
+                <a class="nav-link" th:href="@{/logout}">로그아웃</a>
                 <button><span th:text="${user}"></span>님 환영합니다!</button>
             </li>
-            <li class="nav-item" sec:authorize="isAuthenticated()">
-                <form method="post" action="/logout">
-                    <button type="submit">로그아웃</button>
-                </form>
-            </li>
+
         </ul>
     </div>
 </nav>
