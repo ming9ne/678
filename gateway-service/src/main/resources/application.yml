@@ -18,15 +18,6 @@ spring:
 
   cloud:
     gateway:
-      globalcors:
-        cors-configurations:
-          '[/**]':
-            allowedOrigins: "http://localhost:3000"
-            allow-credentials: true
-            allowedHeaders: '*'
-            allowedMethods:
-              - GET
-              - POST
       default-filters:
         - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Credentials
         - name: GlobalFilter
@@ -40,43 +31,9 @@ spring:
           uri: lb://api_service
           predicates:
             - Path=/api/**
-        # board
-        - id: board
-          uri: lb://BOARD
-          predicates:
-            - Path=/api/v1/board/**
+
         # CRUD
         - id: crud
           uri: lb://CRUD
           predicates:
             - Path=/crud/**
-        # 유저
-        - id: user-service
-          uri: lb://USER-SERVICE
-          predicates:
-            - Path=/api/v1/user-service/**
-        - id: user-service-login
-          uri: lb://USER-SERVICE
-          predicates:
-            - Path=/api/v1/user-service/login
-            - Method=POST
-          filters:
-            - RemoveRequestHeader=Cookie
-            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
-        - id: user-service
-          uri: lb://USER-SERVICE
-          predicates:
-            - Path=/api/v1/user-service/users
-            - Method=POST
-          filters:
-            - RemoveRequestHeader=Cookie
-            - RewritePath=/api/v1/user-service/(?<segment>.*), /$\{segment}
-        - id: user-service
-          uri: lb://USER-SERVICE
-          predicates:
-            - Path=/api/v1/user-service/**
-#            - Method=GET
-          filters:
-            - RemoveRequestHeader=Cookie
-#            - AuthorizationHeaderFilter
-#            - RewritePath=/api/v1/user-service/(?<segment>.*), /$\{segment}

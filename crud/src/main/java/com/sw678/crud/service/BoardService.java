@@ -140,9 +140,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 //@RequiredArgsConstructor
@@ -280,14 +278,39 @@ public class BoardService {
     }
 
     // 3. 제목 + 내용으로 검색
+//    @Transactional
+//    public List<BoardDto> searchTc(String keyword){
+//        List<Board> boardEntitiesByTitle = boardRepository.findByTitleContaining(keyword);
+//        List<Board> boardEntitiesByContent = boardRepository.findByContentContaining(keyword);
+//
+//        List<Board> combinedBoardEntities = new ArrayList<>();
+//        combinedBoardEntities.addAll(boardEntitiesByTitle);
+//        combinedBoardEntities.addAll(boardEntitiesByContent);
+//
+//        List<BoardDto> boardDtoList = new ArrayList<>();
+//
+//        if(combinedBoardEntities.isEmpty()) return boardDtoList;
+//
+//        for(Board board : combinedBoardEntities){
+//            boardDtoList.add(this.convertEntityToDto(board));;
+//        }
+//
+//        return boardDtoList;
+//    }
     @Transactional
     public List<BoardDto> searchTc(String keyword){
         List<Board> boardEntitiesByTitle = boardRepository.findByTitleContaining(keyword);
         List<Board> boardEntitiesByContent = boardRepository.findByContentContaining(keyword);
 
-        List<Board> combinedBoardEntities = new ArrayList<>();
-        combinedBoardEntities.addAll(boardEntitiesByTitle);
-        combinedBoardEntities.addAll(boardEntitiesByContent);
+        // 중복을 제거하고 유일한 항목만 포함하는 Set을 사용
+        Set<Board> combinedBoardEntitiesSet = new LinkedHashSet<>();
+        combinedBoardEntitiesSet.addAll(boardEntitiesByTitle);
+        combinedBoardEntitiesSet.addAll(boardEntitiesByContent);
+
+        // Set을 다시 리스트로 변환하여 순서를 유지
+        List<Board> combinedBoardEntities = new ArrayList<>(combinedBoardEntitiesSet);
+
+
 
         List<BoardDto> boardDtoList = new ArrayList<>();
 
@@ -299,6 +322,7 @@ public class BoardService {
 
         return boardDtoList;
     }
+
 
 
 }
