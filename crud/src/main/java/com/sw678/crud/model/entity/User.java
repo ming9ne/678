@@ -46,4 +46,5 @@ public class User {
         this.provideId = provideId;
         this.createDate = createDate;
     }
+
 }

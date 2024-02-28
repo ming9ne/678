@@ -34,7 +34,7 @@ public class SecurityConfig  {
                 .cors(AbstractHttpConfigurer::disable);
         http.
                 authorizeHttpRequests( auth -> auth
-                        .requestMatchers("/login", "/signup","/css/**", "/images/**").permitAll()
+                        .requestMatchers("/login", "/signup/**","/css/**", "/images/**").permitAll()
                         .anyRequest().authenticated()
                 );
 

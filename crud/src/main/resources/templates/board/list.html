@@ -33,6 +33,19 @@
             color: #007bff;
             font-size: 24px;
         }
+        #searchForm {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #f8f9fa; /* 필요에 따라 배경색 조절 */
+            padding: 10px;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* 선택 사항: 박스 쉐도우 추가 */
+        }
+
+        #searchType {
+            max-width: 30px; /* 최대 너비 조절 */
+            width: 100%; /* 100%로 설정하여 부모 요소의 너비에 맞추기 */
+        }
 
     </style>
 
@@ -78,20 +91,47 @@
         </div>
 
         <!-- 검색 form -->
-        <form action="/board/search" method="GET">
-            <div>
-                <input name="keyword" type="text" placeholder="검색어를 입력해주세요.">
-                <button class="btn btn-primary">검색하기</button>
-            </div>
+        <script>
+            function changeSearchAction() {
+                var selectedOption = document.getElementById("searchType").value;
+                var form = document.getElementById("searchForm");
 
-        </form>
+                if (selectedOption === "title") {
+                    form.action = "/board/search/title";
+                } else if (selectedOption === "content") {
+                    form.action = "/board/search/content";
+                } else if (selectedOption === "writer") {
+                    form.action = "/board/search/writer";
+                } else if (selectedOption === "titleComplex") {
+                    form.action = "/board/search/complex";
+                }
+            }
+        </script>
+
+        <div>
+            <form id="searchForm" method="GET">
+                <div class="input-group mb-3">
+                    <select id="searchType" class="custom-select" onchange="changeSearchAction()" style="max-width: 150px; width: 100%;">
+                        <option value="titleComplex">옵션 선택</option>
+                        <option value="titleComplex">제목 + 내용</option>
+                        <option value="title">제목</option>
+                        <option value="content">내용</option>
+                        <option value="writer">작성자</option>
+                    </select>
+                    <input class="form-control" name="keyword" type="text" placeholder="검색어를 입력해주세요."  style="max-width: 600px; width: 100%;">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="submit">검색하기</button>
+                    </div>
+                </div>
+            </form>
+        </div>
 
     </div>
     <!-- 수정된 부분 -->
-<!--    <div class="footer-icons" style="position: fixed; bottom: 100px; right: 100px;">-->
-<!--        &lt;!&ndash; JavaScript 함수를 호출하여 미니 창 열기 &ndash;&gt;-->
-<!--        <a href="javascript:void(0);" title="chat" onclick="openMiniChat()" style="font-size: 72px; color: black;"><i class="fas fa-comment-dots"></i></a>-->
-<!--    </div>-->
+    <!--    <div class="footer-icons" style="position: fixed; bottom: 100px; right: 100px;">-->
+    <!--        &lt;!&ndash; JavaScript 함수를 호출하여 미니 창 열기 &ndash;&gt;-->
+    <!--        <a href="javascript:void(0);" title="chat" onclick="openMiniChat()" style="font-size: 72px; color: black;"><i class="fas fa-comment-dots"></i></a>-->
+    <!--    </div>-->
 
 </main>
 

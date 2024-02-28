@@ -1,25 +1,22 @@
 package com.sw678.crud.controller;
 
-import com.sw678.crud.model.dto.SigninDto;
 import com.sw678.crud.model.dto.SignupDto;
 import com.sw678.crud.model.entity.User;
-import com.sw678.crud.model.entity.socialuser.UserDetail;
+import com.sw678.crud.repository.UserRepository;
 import com.sw678.crud.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import java.net.http.HttpRequest;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 import java.util.Random;
 
 @Controller
@@ -28,6 +25,10 @@ public class UserController {
     private final UserService userService;
     private final JavaMailSender mailSender;
     private static final String FROM_ADDRESS = "sangjuncho232@gmail.com";
+
+    @Autowired
+    private UserRepository userRepository;
+
 
     @Autowired
     public UserController(UserService userService, JavaMailSender mailSender) {
@@ -76,7 +77,7 @@ public class UserController {
     //// MAIL
 
     @ResponseBody
-    @GetMapping("/emailAuth")
+    @GetMapping("/signup/emailAuth")
     public String emailAuth(String email){
         Random random = new Random();
         int check = (int)(Math.random() * 899999) + 100000;
@@ -120,5 +121,10 @@ public class UserController {
 
         return "myPage";
     }
+
+    //nickname
+
+
+
 
 }

@@ -94,6 +94,9 @@ public class UserDetail implements UserDetails, OAuth2User {
     private String email;
     private Role role;
     private String create_date;
+//    private String post_content;
+//    private String post_title;
+
 
     // 일반 로그인 생성자
     public UserDetail(User user, String nickname, String email, Role role, String create_date) {
