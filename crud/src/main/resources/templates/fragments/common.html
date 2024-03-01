@@ -89,18 +89,20 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:fragment="head(title)">
     <!-- Required meta tags -->
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"/>
     <link href="starter-template.css" th:href="@{/css/starter-template.css}" rel="stylesheet"/>
     <title th:text="${title}">Shall We take a walk?</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" th:fragment="menu(menu)">
     <a class="navbar-brand" th:href="@{/board/mainPage}">산책 합시다</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+            aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -135,36 +137,34 @@
 
             <!--            Notion-->
             <li class="nav-item" th:classappend="${menu} == 'map'? 'active'">
-                <a class="nav-link" href="https://www.notion.so/678-a00e001a30254db1b99d082ae94a67dc?pvs=4" target="_blank">
+                <a class="nav-link" href="https://www.notion.so/678-a00e001a30254db1b99d082ae94a67dc?pvs=4"
+                   target="_blank">
                     Notion
                     <span class="sr-only" th:if="${menu} == 'Notion'">(current)</span>
                 </a>
             </li>
-            <!--            <li class="nav-item" th:classappend="${menu} == 'board'? 'active'">-->
-            <!--                <a class="nav-link" href="#" th:href="@{/chat}">-->
-            <!--                    채팅-->
-            <!--                    <span class="sr-only" th:if="${menu} == 'board'">(current)</span>-->
-            <!--                </a>-->
-            <!--            </li>-->
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item" sec:authorize="isAnonymous()">
                 <a class="nav-link" th:href="@{/login}">로그인</a>
+            </li>
+            <li class="nav-item" sec:authorize="isAnonymous()">
                 <a class="nav-link" th:href="@{/signup}">회원가입</a>
             </li>
-            <li class="nav-item" th:classappend="${menu} == 'myPage'? 'active'">
+            <li class="nav-item" sec:authorize="isAuthenticated()">
                 <a class="nav-link" href="#" th:href="@{/myPage}">
-                    마이페이지
-                    <span class="sr-only" th:if="${menu} == 'myPage'">(current)</span>
+                    <span>마이페이지</span>
+                    <span style="color: white;" th:text="${user}"></span>
+                    <span style="color: white;">님 환영합니다!</span>
                 </a>
             </li>
-
             <li class="nav-item" sec:authorize="isAuthenticated()">
                 <a class="nav-link" th:href="@{/logout}">로그아웃</a>
-                <button><span th:text="${user}"></span>님 환영합니다!</button>
             </li>
-
         </ul>
+
+
+
     </div>
 </nav>
 </body>

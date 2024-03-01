@@ -218,23 +218,29 @@ public class BoardController {
     }
 
     @GetMapping("/map")
-    public String showMap(Model model) {
+    public String showMap(Model model, @AuthenticationPrincipal UserDetail user) {
         // 여기에서 지도 페이지를 보여주는 로직을 추가할 수 있습니다.
+        if(user != null)
+            model.addAttribute("user", user.getUser().getNickname());
         return "board/map";
     }
 
     @GetMapping("/mainPage")
-    public String showMain(Model model) {
+    public String showMain(Model model, @AuthenticationPrincipal UserDetail user) {
         // 여기에서 지도 페이지를 보여주는 로직을 추가할 수 있습니다.
+        if(user != null)
+            model.addAttribute("user", user.getUser().getNickname());
         return "board/mainPage";
     }
 
     // search
     // 1. 제목 + 내용으로 검색
     @GetMapping("/search/complex")
-    public String searchComplex(@RequestParam(value = "keyword") String keyword, Model model){
+    public String searchComplex(@RequestParam(value = "keyword") String keyword, Model model
+            , @AuthenticationPrincipal UserDetail user){
         List<BoardDto> boardDtoList = boardService.searchTc(keyword);
 
+        model.addAttribute("user", user.getUser().getNickname());
         model.addAttribute("boardList",boardDtoList);
 
         return "board/list";
@@ -242,9 +248,11 @@ public class BoardController {
 
     // 2. 제목으로 검색
     @GetMapping("/search/title")
-    public String searchTitle(@RequestParam(value = "keyword") String keyword, Model model){
+    public String searchTitle(@RequestParam(value = "keyword") String keyword, Model model
+            , @AuthenticationPrincipal UserDetail user){
         List<BoardDto> boardDtoList = boardService.searchT(keyword);
 
+        model.addAttribute("user", user.getUser().getNickname());
         model.addAttribute("boardList",boardDtoList);
 
         return "board/list";
@@ -252,8 +260,20 @@ public class BoardController {
 
     // 3. 내용으로 검색
     @GetMapping("/search/content")
-    public String searchContent(@RequestParam(value = "keyword") String keyword, Model model){
+    public String searchContent(@RequestParam(value = "keyword") String keyword, Model model
+            , @AuthenticationPrincipal UserDetail user){
         List<BoardDto> boardDtoList = boardService.searchC(keyword);
+
+        model.addAttribute("user", user.getUser().getNickname());
+        model.addAttribute("boardList",boardDtoList);
+
+        return "board/list";
+    }
+
+
+    @GetMapping("/search/writer")
+    public String searchWriter(@RequestParam(value = "keyword") String keyword, Model model){
+        List<BoardDto> boardDtoList = boardService.searchW(keyword);
 
         model.addAttribute("boardList",boardDtoList);
 

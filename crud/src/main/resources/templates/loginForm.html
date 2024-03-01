@@ -4,27 +4,66 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <!-- Assuming you want to use Bootstrap 4, update the link accordingly if you are using a different version -->
     <style>
-        .button {
-            border: none; /* 버튼 테두리 없앰 */
-            background: none; /* 배경 없앰 */
-            padding: 0; /* 내부 여백 없앰 */
-            cursor: pointer;
-            display: inline-block;
+        body {
+            background-color: #f8f9fa;
         }
 
-        .button img {
-            width: 100%; /* 부모 요소의 너비에 맞게 이미지 크기 조정 */
-            height: auto; /* 가로 비율에 맞추어 세로 크기 자동 조정 */
+        .container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-top: 50px;
         }
+
+        h2 {
+            color: #343a40;
+        }
+
+        label {
+            color: #495057;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            border-color: #6c757d;
+        }
+
+        .btn-social {
+            border: none;
+            padding: 0;
+        }
+
+        .btn-social img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+
+        .alert-danger {
+            color: #721c24;
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+        }
+
         .field-error {
             color: red;
         }
-
     </style>
-
-
 </head>
 
 <body>
@@ -51,21 +90,18 @@
         <div th:if="${param.error}">
             <p style="color:red;">로그인에 실패했습니다: <span th:text="${param.exception}"></span></p>
             <script>
-                // JavaScript 코드를 사용하여 alert 창을 띄웁니다.
                 const msg = "로그인에 실패했습니다: \n" + "[[${param.exception}]]";
                 alert(msg);
             </script>
         </div>
         <div class="row justify-content-center mb-4">
-            <div class="col-md-6"> <!-- Adjust the width by changing the column size -->
+            <div class="col-md-6">
                 <div class="row">
                     <div class="col">
                         <button type="submit" class="btn btn-primary btn-lg btn-block">로그인</button>
                     </div>
                     <div class="col">
-                        <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="location.href='/signup'">
-                            회원가입
-                        </button>
+                        <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="location.href='/signup'">회원가입</button>
                     </div>
                 </div>
             </div>
@@ -76,25 +112,24 @@
                 <div class="col-md-6">
                     <div class="row">
                         <div class="col">
-                            <button type="button" style="border: none;">
-                                <img src="https://ifh.cc/g/nnFRJL.png" alt="KaKao" onclick="location.href='/oauth2/authorization/kakao'">
+                            <button type="button" class="btn btn-social" onclick="location.href='/oauth2/authorization/kakao'">
+                                <img src="https://ifh.cc/g/nnFRJL.png" alt="KaKao">
                             </button>
                         </div>
                         <div class="col">
-                            <button type="button" style="border: none;">
-                                <img src="https://ifh.cc/g/cGJSqD.png" alt="Naver" onclick="location.href='/oauth2/authorization/naver'">
+                            <button type="button" class="btn btn-social" onclick="location.href='/oauth2/authorization/naver'">
+                                <img src="https://ifh.cc/g/cGJSqD.png" alt="Naver">
                             </button>
                         </div>
                         <div class="col">
-                            <button type="button" style="border: none;">
-                                <img src="https://ifh.cc/g/jKO6Lq.png" alt="Google" onclick="location.href='/oauth2/authorization/google'">
+                            <button type="button" class="btn btn-social" onclick="location.href='/oauth2/authorization/google'">
+                                <img src="https://ifh.cc/g/jKO6Lq.png" alt="Google">
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </form>
 </div>
 

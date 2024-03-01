@@ -322,7 +322,19 @@ public class BoardService {
 
         return boardDtoList;
     }
+    @Transactional
+    public List<BoardDto> searchW(String keyword) {
+        List<Board> boardEntities = boardRepository.findByWriterContaining(keyword);
+        List<BoardDto> boardDtoList = new ArrayList<>();
 
+        if (boardEntities.isEmpty()) return boardDtoList;
 
+        for (Board board : boardEntities) {
+            boardDtoList.add(this.convertEntityToDto(board));
+            ;
+        }
 
+        return boardDtoList;
+
+    }
 }

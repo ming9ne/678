@@ -34,7 +34,7 @@ public class SecurityConfig  {
                 .cors(AbstractHttpConfigurer::disable);
         http.
                 authorizeHttpRequests( auth -> auth
-                        .requestMatchers("/login", "/signup/**","/css/**", "/images/**").permitAll()
+                        .requestMatchers("/board/mainPage","/login", "/signup/**","/css/**", "/images/**").permitAll()
                         .anyRequest().authenticated()
                 );
 
@@ -56,6 +56,8 @@ public class SecurityConfig  {
         http
                 .oauth2Login(oauth -> oauth
                         .loginPage("/loginForm")
+                        .successHandler(loginSuccessHandler)
+                        .failureHandler(loginFailHandler)
                         .userInfoEndpoint(userInfo -> userInfo
                                 .userService(principleOauth2UserService))
                 );

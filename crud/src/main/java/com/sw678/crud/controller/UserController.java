@@ -2,6 +2,7 @@ package com.sw678.crud.controller;
 
 import com.sw678.crud.model.dto.SignupDto;
 import com.sw678.crud.model.entity.User;
+import com.sw678.crud.model.entity.socialuser.UserDetail;
 import com.sw678.crud.repository.UserRepository;
 import com.sw678.crud.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -11,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -112,12 +114,14 @@ public class UserController {
     }
 
     // my page
+
     @GetMapping("/myPage")
-    public String myPage(Model model) {
+    public String myPage(Model model, @AuthenticationPrincipal UserDetail user) {
         SignupDto userDetail = userService.getCurrentUserDetails();
 
         // 모델에 사용자 정보 추가
         model.addAttribute("userDetail", userDetail);
+        model.addAttribute("user", user.getUser().getNickname());
 
         return "myPage";
     }
