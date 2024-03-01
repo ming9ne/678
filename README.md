@@ -1,7 +1,7 @@
 <!--헤더-->
 <img src="https://capsule-render.vercel.app/api?type=waving&height=300&color=gradient&text=678%20Project&fontAlign=50&fontAlignY=50&descAlign=100&textBg=false&fontColor=black&animation=twinkling&fontSize=90" />
 
-### 678 노션 => [노션](https://www.notion.so/678-a00e001a30254db1b99d082ae94a67dc)
+### 678 노션 => [notion_link](https://www.notion.so/678-a00e001a30254db1b99d082ae94a67dc)
 
 # 678 산책 메이트
 
