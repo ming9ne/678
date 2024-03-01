@@ -36,7 +36,7 @@
 ---
 ## 팀원(역할분담)
 
-|박태현|조상준|이승철|
+|[박태현](https://github.com/ming9ne)|[조상준](https://github.com/tns250cpp)|[이승철](https://github.com/Seungchuulee)|
 |---|---|---|
 |![PTH_](https://github.com/ming9ne/678/assets/31677719/9d80bf72-2536-4f60-98f4-59bc90a94436)|![CSJ_](https://github.com/ming9ne/678/assets/31677719/186cf805-8526-44d2-bf56-fd983325503b)|![LSC_](https://github.com/ming9ne/678/assets/31677719/3cef4d90-f021-499d-8717-db4da8c7e2e4)|
 |여기다가|각자가|맡은역할|
