@@ -55,7 +55,7 @@
 ---
 
 ## 아키텍처
-![678_architec](https://github.com/tns250cpp/tns250cpp/assets/31677719/567c5def-1547-4da8-8b1e-68aa69c0b71d)
+![678 아키텍처](https://github.com/tns250cpp/678/assets/31677719/fe1d6b7d-7fe0-43b7-bac0-74b46c3f6fcd)
 
 ---
 
