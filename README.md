@@ -23,6 +23,7 @@
   건강하고 쾌적한 산책을 즐길 수 있도록 지원합니다. 함께 산책을 나가고 싶은 사람들을 구하여
 
   새로운 친구를 만들고, 건강한 라이프스타일을 즐길 수 있는 서비스입니다.
+  
 ---
 
 ## 서비스소개
@@ -34,7 +35,9 @@
 - 마이페이지
 - 카카오 지도 API를 통한 공원 데이터
 - 실시간 미세먼지 현황 데이터
+  
 ---
+
 ## 팀원(역할분담)
 
 |[박태현](https://github.com/ming9ne)|[조상준](https://github.com/tns250cpp)|[이승철](https://github.com/Seungchuulee)|
@@ -50,10 +53,12 @@
 
 
 ---
+
 ## 아키텍처
 ![678_architec](https://github.com/tns250cpp/tns250cpp/assets/31677719/567c5def-1547-4da8-8b1e-68aa69c0b71d)
 
 ---
+
 <!--기술 스택 뱃지 처리-->
 ## 기술스택
 - 기술스택은 조상준이 임의로 작성, 추가할 거 있으면 더 추가하기.(이 문구는 나중에 지우기)<br>
@@ -89,6 +94,8 @@
   <img src="https://img.shields.io/badge/notion-000000?style=for-the-badge&logo=notion&logoColor=white">&nbsp
   <img src="https://img.shields.io/badge/github-181717?&style=for-the-badge&logo=github&logoColor=white"/>&nbsp
 </div>
+
+---
 
 ## 기능
 - 서비스 진행되는 간단한 이미지?(이 문구는 나중에 지우기)
