@@ -29,6 +29,7 @@
 - 로그인 / 회원가입 기능 (회원가입시 이메일 인증)
 - 소셜 로그인 기능 (소셜 로그인[카카오톡, 네이버, 구글] -> 자동 회원가입)
 - 게시판 CRUD (계층형 댓글 및 대댓글 기능 포함)
+- 카테고리별 검색 기능
 - 웹 소켓 채팅을 통한 산책 메이트 구하기(개별 채팅방)
 - 마이페이지
 - 카카오 지도 API를 통한 공원 데이터
@@ -39,13 +40,13 @@
 |[박태현](https://github.com/ming9ne)|[조상준](https://github.com/tns250cpp)|[이승철](https://github.com/Seungchuulee)|
 |---|---|---|
 |![PTH_](https://github.com/ming9ne/678/assets/31677719/9d80bf72-2536-4f60-98f4-59bc90a94436)|![CSJ_](https://github.com/ming9ne/678/assets/31677719/186cf805-8526-44d2-bf56-fd983325503b)|![LSC_](https://github.com/ming9ne/678/assets/31677719/3cef4d90-f021-499d-8717-db4da8c7e2e4)|
-|∙ Spring Cloud Gateway 설정
-∙ Microservices Architecture 구조 설계
-∙ CORS 설정
-∙ Front 화면 구성
-∙ 카카오 지도를 통한 공공데이터 표시
-∙ GitHub, Notion 관리 |∙ Spring Security 설정
-                       |맡은역할|
+|∙ Spring Cloud Gateway 설정            |∙ Spring Security 설정                      |∙ 로그인 및 회원가입 기능 구현
+|∙ Microservices Architecture 구조 설계 |∙ 소셜 로그인 및 일반 로그인 메일인증 구현   |∙ 게시판 CRUD 기능 구현
+|∙ CORS 설정                            |∙ 공공 데이터 DTO화 및 DB 백업(스케줄러 사용)|∙ 로그인,회원가입 및 게시판 페이지 제작
+|∙ Front 화면 구성                      |∙ 예외 처리 Handler 구현                     |∙ 채팅방 프로토타입 제작
+|∙ 카카오 지도를 통한 공공데이터 표시    |∙ 게시판 대댓글 기능 구현(JSON 계층형 트리)  |∙ 검색 기능 구현
+|∙ GitHub, Notion 관리                  |∙ 웹 소켓 멀티 채팅방 기능 구현              | ∙ 회원, 게시판 DB 설계
+                       
 
 
 ---
