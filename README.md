@@ -44,9 +44,8 @@
 ∙ CORS 설정
 ∙ Front 화면 구성
 ∙ 카카오 지도를 통한 공공데이터 표시
-∙ GitHub, Notion 관리 
-|∙ Spring Security 설정
-|맡은역할|
+∙ GitHub, Notion 관리 |∙ Spring Security 설정
+                       |맡은역할|
 
 
 ---
