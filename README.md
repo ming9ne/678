@@ -1,12 +1,13 @@
 <!--헤더-->
 <img src="https://capsule-render.vercel.app/api?type=waving&height=300&color=gradient&text=678%20Project&fontAlign=50&fontAlignY=50&descAlign=100&textBg=false&fontColor=black&animation=twinkling&fontSize=90" />
 
-[노션](https://www.notion.so/678-a00e001a30254db1b99d082ae94a67dc)
+### 678 노션 => [notion_link](https://www.notion.so/678-a00e001a30254db1b99d082ae94a67dc)
 
-# 뭘 작성해야 할까 
+# 678 산책 메이트
 
 ## 목차
 - [프로젝트소개](#프로젝트소개)
+- [서비스소개](#서비스소개)
 - [팀원(역할분담)](#팀원(역할분담))
 - [개발환경](#개발환경)
 - [기술스택](#기술스택)
@@ -14,16 +15,45 @@
 <br>
 
 ## 프로젝트소개
-- 프로젝트 소개란 적기(이 문구는 나중에 지우기)
-## 팀원(역할분담)
-- 추가할 내용 적기. (이 문구는 나중에 지우기)
-- 박태현
-- 조상준
-- 이승철
 
+- **678 산책 메이트** 는 실시간 미세먼지 정보를 활용한 산책 메이트를 구하는 커뮤니티 입니다.
+
+  사용자들에게 주변의 공원들을 추천하고, 해당 지역의 미세먼지 수준을 실시간으로 제공하여
+
+  건강하고 쾌적한 산책을 즐길 수 있도록 지원합니다. 함께 산책을 나가고 싶은 사람들을 구하여
+
+  새로운 친구를 만들고, 건강한 라이프스타일을 즐길 수 있는 서비스입니다.
+---
+
+## 서비스소개
+- 로그인 / 회원가입 기능 (회원가입시 이메일 인증)
+- 소셜 로그인 기능 (소셜 로그인[카카오톡, 네이버, 구글] -> 자동 회원가입)
+- 게시판 CRUD (계층형 댓글 및 대댓글 기능 포함)
+- 웹 소켓 채팅을 통한 산책 메이트 구하기(개별 채팅방)
+- 마이페이지
+- 카카오 지도 API를 통한 공원 데이터
+- 실시간 미세먼지 현황 데이터
+---
+## 팀원(역할분담)
+
+|[박태현](https://github.com/ming9ne)|[조상준](https://github.com/tns250cpp)|[이승철](https://github.com/Seungchuulee)|
+|---|---|---|
+|![PTH_](https://github.com/ming9ne/678/assets/31677719/9d80bf72-2536-4f60-98f4-59bc90a94436)|![CSJ_](https://github.com/ming9ne/678/assets/31677719/186cf805-8526-44d2-bf56-fd983325503b)|![LSC_](https://github.com/ming9ne/678/assets/31677719/3cef4d90-f021-499d-8717-db4da8c7e2e4)|
+|∙ Spring Cloud Gateway 설정
+∙ Microservices Architecture 구조 설계
+∙ CORS 설정
+∙ Front 화면 구성
+∙ 카카오 지도를 통한 공공데이터 표시
+∙ GitHub, Notion 관리 
+|∙ Spring Security 설정
+|맡은역할|
+
+
+---
 ## 개발환경
 - 개발환경 적기(이 문구는 나중에 지우기)
 
+---
 <!--기술 스택 뱃지 처리-->
 ## 기술스택
 - 기술스택은 조상준이 임의로 작성, 추가할 거 있으면 더 추가하기.(이 문구는 나중에 지우기)<br>
