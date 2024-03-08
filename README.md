@@ -45,6 +45,8 @@
 ∙ Front 화면 구성
 ∙ 카카오 지도를 통한 공공데이터 표시
 ∙ GitHub, Notion 관리 |각자가|맡은역할|
+|∙ Spring Security 설정
+∙ |
 
 ---
 ## 개발환경
