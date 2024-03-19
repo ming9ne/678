@@ -100,7 +100,31 @@
 ## 기능
 - 서비스 진행되는 간단한 이미지?(이 문구는 나중에 지우기)
 
-<!--푸터-->
-<!--
-<img src="https://capsule-render.vercel.app/api?type=waving&height=200&color=gradient&text=&fontAlign=50&fontAlignY=50&descAlign=100&textBg=false&fontColor=black&animation=twinkling&fontSize=90" />
--->
+
+### 회원가입
+![회원가입](https://ifh.cc/g/koNwAH.png)
+- 회원가입 기능에 대한 설명을 여기에 작성하세요.
+
+### 로그인
+![로그인](https://ifh.cc/g/X2Wp94.png)
+- 로그인 기능에 대한 설명을 여기에 작성하세요.
+
+### 소셜 로그인
+![소셜 로그인](https://ifh.cc/g/9YGlpl.png)
+- 소셜 로그인 기능에 대한 설명을 여기에 작성하세요.
+
+### 게시판
+![게시판](https://ifh.cc/g/kl6s9W.png)
+- 게시판 기능에 대한 설명을 여기에 작성하세요.
+
+### 댓글
+![댓글](https://ifh.cc/g/X2Wp94.png)
+- 댓글 기능에 대한 설명을 여기에 작성하세요.
+
+### 채팅
+![채팅](https://ifh.cc/g/fvW6ga.png)
+- 채팅 기능에 대한 설명을 여기에 작성하세요.
+
+### 지도
+![지도](https://ifh.cc/g/yZh68d.jpg)
+- 지도 기능에 대한 설명을 여기에 작성하세요.
